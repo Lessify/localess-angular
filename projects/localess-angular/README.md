@@ -11,7 +11,7 @@
 This client SDK is designed to work with the Localess API. It provides a simple way to interact with the Localess API from your Angular application.
 
 > **Important:**
-> The Client has two modules **client** and **server**.
+> The @localess\angular Library has two modules **client** and **server**.
 >
 > The **client** module is designed to be used on the client side only, as it **API Token** is not requires.
 >
