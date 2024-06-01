@@ -32,6 +32,6 @@ jobs:
       - name: Build 🏗️
         run: npm run build
       - name: Publish package on NPM 📦
-        run: npm publish --access public --tag next dist\localess-angular
+        run: npm publish .\dist\localess-angular --access public --tag next
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
