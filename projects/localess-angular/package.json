@@ -1,6 +1,25 @@
 {
   "name": "@localess/angular",
   "version": "0.0.1",
+  "description": "Angular Library for Localess's API. ",
+  "keywords": [
+    "localess",
+    "sdk",
+    "api",
+    "client",
+    "angular",
+    "typescript"
+  ],
+  "author": "Lessify",
+  "homepage": "https://github.com/Lessify/localess-angular",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lessify/localess-angular.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Lessify/localess-angular/issues"
+  },
+  "license": "MIT",
   "peerDependencies": {
     "@angular/common": "^18.0.0",
     "@angular/core": "^18.0.0"

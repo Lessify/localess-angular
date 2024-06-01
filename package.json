@@ -2,7 +2,7 @@
   "name": "@localess/angular",
   "version": "0.0.1",
   "private": false,
-  "description": "Angular Library for Localess's API.",
+  "description": "Angular Library for Localess's API. ",
   "keywords": [
     "localess",
     "sdk",
