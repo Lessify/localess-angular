@@ -1,6 +1,22 @@
 {
   "name": "@localess/angular",
   "version": "0.0.1",
+  "private": false,
+  "description": "Angular Library for Localess's API.",
+  "keywords": [
+    "localess",
+    "sdk",
+    "api",
+    "client",
+    "angular",
+    "typescript"
+  ],
+  "author": "Lessify",
+  "homepage": "https://github.com/Lessify/localess-angular",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -8,7 +24,6 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "^18.0.0",
     "@angular/common": "^18.0.0",
