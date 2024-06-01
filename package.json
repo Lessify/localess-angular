@@ -17,6 +17,14 @@
   "files": [
     "dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lessify/localess-angular.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Lessify/localess-angular/issues"
+  },
+  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

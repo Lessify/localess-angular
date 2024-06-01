@@ -1,24 +1,44 @@
-# LocalessAngular
+<br/>
+<br/>
+<img src="https://github.com/Lessify/localess/wiki/img/logo-adaptive.svg" alt="logo">
+<br/>
+<br/>
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.0.
+----
 
-## Code scaffolding
+# Localess Angular
 
-Run `ng generate component component-name --project localess-angular` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project localess-angular`.
-> Note: Don't forget to add `--project localess-angular` or else it will be added to the default project in your `angular.json` file. 
+This client SDK is designed to work with the Localess API. It provides a simple way to interact with the Localess API from your Angular application.
 
-## Build
+> **Important:**
+> The Client has two modules **client** and **server**.
+>
+> The **client** module is designed to be used on the client side only, as it **API Token** is not requires.
+>
+> The **server** module is designed to be used on the server side only, as it requires your **Localess API Token** to be kept secret.
 
-Run `ng build localess-angular` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Installation
 
-## Publishing
+### NPM
+````bash
+npm install @localess/angular@latest
+````
 
-After building your library with `ng build localess-angular`, go to the dist folder `cd dist/localess-angular` and run `npm publish`.
+### Yarn
+````bash
+yarn add @localess/angular@latest
+````
 
-## Running unit tests
+## Usage
 
-Run `ng test localess-angular` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Client Module
 
-## Further help
+````ts
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+````
+
+## Server Module
+
+````ts
+
+````
