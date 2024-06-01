@@ -1,0 +1,35 @@
+---
+
+name: NEXT Build and Push NPM Package
+
+on:
+  push:
+    branches: [main]
+    # Only build when files in these directories have been changed
+    paths:
+      - src/**
+      - package.json
+      - tsconfig.json
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: "https://registry.npmjs.org"
+          cache: npm
+      - name: Install 🔧
+        run: npm install
+      - name: Build 🏗️
+        run: npm run build
+      - name: Change version
+        run: npm --no-git-tag-version version prerelease --preid next.$(date +'%Y%m%d-%H%M%S')
+      - name: Publish package on NPM 📦
+        run: npm publish --access public --tag next
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

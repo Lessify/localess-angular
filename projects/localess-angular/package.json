@@ -1,0 +1,16 @@
+{
+  "name": "@localess/angular",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^18.0.0",
+    "@angular/core": "^18.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0",
+    "@localess/js-client": "^0.0.5-next.20240531-164126.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.13"
+  },
+  "sideEffects": false
+}
