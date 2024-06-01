@@ -29,6 +29,7 @@ npm install @localess/angular@latest
 yarn add @localess/angular@latest
 ````
 
+
 ## Usage
 
 ## Client Module
