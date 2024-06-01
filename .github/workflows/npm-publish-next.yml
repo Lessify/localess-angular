@@ -25,11 +25,13 @@ jobs:
           cache: npm
       - name: Install 🔧
         run: npm install
+      - name: Change version
+        run: |
+          cd projects/localess-angular
+          npm --no-git-tag-version version prerelease --preid next.$(date +'%Y%m%d-%H%M%S')
       - name: Build 🏗️
         run: npm run build
-      - name: Change version
-        run: npm --no-git-tag-version version prerelease --preid next.$(date +'%Y%m%d-%H%M%S')
       - name: Publish package on NPM 📦
-        run: npm publish --access public --tag next
+        run: npm publish --access public --tag next dist\localess-angular
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
