@@ -15,6 +15,7 @@ export class AssetPipe implements PipeTransform {
   }
 
   transform(asset: ContentAsset): string {
+    console.log('[Localess]AssetPipe:transform', this.config, asset);
     return `${this.config.origin}/api/v1/spaces/${this.config.spaceId}/assets/${asset.uri}`;
   }
 }

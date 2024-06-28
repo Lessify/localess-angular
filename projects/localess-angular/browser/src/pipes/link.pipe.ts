@@ -15,6 +15,7 @@ export class LinkPipe implements PipeTransform {
   }
 
   transform(link: ContentLink, links: Links): string {
+    console.log('[Localess]LinkPipe:transform', this.config, link);
     switch (link.type) {
       case "content": {
         const path = links[link.uri]

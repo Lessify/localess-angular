@@ -45,6 +45,5 @@ export function provideLocalessServer(options: LocalessServerOptions): Environme
       },
     ])
   ];
-  console.log('[Localess] provideLocalessServer', providers);
   return providers;
 }

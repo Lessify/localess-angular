@@ -34,6 +34,5 @@ export function provideLocalessBrowser(options: LocalessBrowserOptions): Environ
       },
     ])
   ];
-  console.log('[Localess] provideLocalessBrowser', providers);
   return providers;
 }
