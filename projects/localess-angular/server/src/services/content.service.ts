@@ -10,9 +10,10 @@ import {Content, ContentFetchParams, Links} from "@localess/js-client";
 export class ServerContentService {
 
   constructor(
-      readonly httpClient: HttpClient,
-      @Inject(LOCALESS_SERVER_CONFIG) readonly config: LocalessServerConfig
+    readonly httpClient: HttpClient,
+    @Inject(LOCALESS_SERVER_CONFIG) readonly config: LocalessServerConfig
   ) {
+    console.log('[Localess]ServerContentService', config);
   }
 
   /**

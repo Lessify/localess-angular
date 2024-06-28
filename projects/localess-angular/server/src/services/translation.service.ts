@@ -10,9 +10,10 @@ import {Translations} from "@localess/js-client";
 export class ServerTranslationService {
 
   constructor(
-      readonly httpClient: HttpClient,
-      @Inject(LOCALESS_SERVER_CONFIG) readonly config: LocalessServerConfig
+    readonly httpClient: HttpClient,
+    @Inject(LOCALESS_SERVER_CONFIG) readonly config: LocalessServerConfig
   ) {
+    console.log('[Localess]ServerTranslationService', config);
   }
 
   /**

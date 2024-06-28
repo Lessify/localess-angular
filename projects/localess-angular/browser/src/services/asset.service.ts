@@ -10,6 +10,7 @@ export class BrowserAssetService {
   constructor(
       @Inject(LOCALESS_BROWSER_CONFIG) readonly config: LocalessBrowserConfig
   ) {
+    console.log('[Localess]BrowserAssetService', config);
   }
 
   /**

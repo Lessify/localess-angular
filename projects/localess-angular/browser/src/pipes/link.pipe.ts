@@ -1,11 +1,18 @@
-import {Pipe, PipeTransform} from "@angular/core";
+import {Inject, Pipe, PipeTransform} from "@angular/core";
 import {ContentLink, Links} from "@localess/js-client";
+import {LOCALESS_BROWSER_CONFIG, LocalessBrowserConfig} from "../localess.config";
 
 @Pipe({
   name: 'llLink',
   standalone: true
 })
 export class LinkPipe implements PipeTransform {
+
+  constructor(
+    @Inject(LOCALESS_BROWSER_CONFIG) readonly config: LocalessBrowserConfig
+  ) {
+    console.log('[Localess]LinkPipe', config);
+  }
 
   transform(link: ContentLink, links: Links): string {
     switch (link.type) {

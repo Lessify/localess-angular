@@ -11,6 +11,7 @@ export class AssetPipe implements PipeTransform {
   constructor(
     @Inject(LOCALESS_BROWSER_CONFIG) readonly config: LocalessBrowserConfig
   ) {
+    console.log('[Localess]AssetPipe', config);
   }
 
   transform(asset: ContentAsset): string {

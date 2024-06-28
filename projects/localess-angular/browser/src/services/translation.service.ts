@@ -13,6 +13,7 @@ export class BrowserTranslationService {
       readonly httpClient: HttpClient,
       @Inject(LOCALESS_BROWSER_CONFIG) readonly config: LocalessBrowserConfig
   ) {
+    console.log('[Localess]BrowserTranslationService', config);
   }
 
   /**
