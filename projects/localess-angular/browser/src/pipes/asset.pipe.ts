@@ -1,6 +1,6 @@
-import {Inject, Optional, Pipe, PipeTransform} from "@angular/core";
+import {Pipe, PipeTransform} from "@angular/core";
 import {ContentAsset} from "@localess/js-client";
-import {LOCALESS_BROWSER_CONFIG, LocalessBrowserConfig} from "../localess.config";
+import {BrowserAssetService} from "../services/asset.service";
 
 @Pipe({
   name: 'llAsset',
@@ -9,16 +9,12 @@ import {LOCALESS_BROWSER_CONFIG, LocalessBrowserConfig} from "../localess.config
 export class AssetPipe implements PipeTransform {
 
   constructor(
-    @Inject(LOCALESS_BROWSER_CONFIG)
-    @Optional()
-    private readonly config?: LocalessBrowserConfig | null
+    private readonly assetService: BrowserAssetService
   ) {
   }
 
   transform(asset: ContentAsset): string {
-    if (this.config) {
-      return `${this.config.origin}/api/v1/spaces/${this.config.spaceId}/assets/${asset.uri}`;
-    }
-    return '';
+//      return `${this.config.origin}/api/v1/spaces/${this.config.spaceId}/assets/${asset.uri}`;
+    return this.assetService.link(asset);
   }
 }
