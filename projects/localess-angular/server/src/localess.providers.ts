@@ -17,6 +17,10 @@ export type LocalessServerOptions = {
    */
   token: string;
   /**
+   * Content version to fetch, leave empty for 'published' or 'draft' for the latest draft
+   */
+  version?: 'draft' | string;
+  /**
    * Enable debug mode
    */
   debug?: boolean;
