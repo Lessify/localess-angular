@@ -6,6 +6,7 @@ export * from './pipes/asset.pipe';
 export * from './pipes/link.pipe';
 
 // Service
+export * from  './services/asset.service';
 export * from  './services/translation.service';
 
 // Config
