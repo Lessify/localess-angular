@@ -36,7 +36,6 @@ export function provideLocalessServer(options: LocalessServerOptions): Environme
   if (options.token === undefined || options.token === '') {
     throw new Error('Localess Token can\'t be empty');
   }
-  console.log('[Localess] provideLocalessServer', options);
   const providers: EnvironmentProviders[] = [
     makeEnvironmentProviders([
       {

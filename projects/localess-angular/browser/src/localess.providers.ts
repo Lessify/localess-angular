@@ -25,7 +25,6 @@ export function provideLocalessBrowser(options: LocalessBrowserOptions): Environ
   if (options.spaceId === undefined || options.spaceId === '') {
     throw new Error('Localess Space ID can\'t be empty');
   }
-  console.log('[Localess] provideLocalessBrowser', options);
   const providers: EnvironmentProviders[] = [
     makeEnvironmentProviders([
       {
