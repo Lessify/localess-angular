@@ -8,6 +8,7 @@ on:
     # Only build when files in these directories have been changed
     paths:
       - src/**
+      - projects/**
       - package.json
       - tsconfig.json
 

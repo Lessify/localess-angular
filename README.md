@@ -34,11 +34,46 @@ yarn add @localess/angular@latest
 ## Client Module
 
 ````ts
+const LOCALESS_URL = 'https://my-localess.web.app';
+const LOCALESS_SPACE = 'I1LoVe2LocaLess4Rever';
 
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideLocalessBrowser({
+      origin: LOCALESS_URL,
+      spaceId: LOCALESS_SPACE,
+    }),
+    {
+      provide: IMAGE_LOADER,
+      useValue: (config: ImageLoaderConfig) => {
+        // optimize image for API assets
+        if (config.src.startsWith(`${LOCALESS_URL}/api/`) && config.width) {
+          return `${config.src}?w=${config.width}`;
+        } else {
+          return config.src;
+        }
+      },
+    },
+  ],
+};
 ````
 
 ## Server Module
 
 ````ts
+const LOCALESS_URL = 'https://my-localess.web.app';
+const LOCALESS_SPACE = 'I1LoVe2LocaLess4Rever';
+const LOCALESS_TOKEN = 'Baz00KaT0KeN8S3CureLL';
 
+const serverConfig: ApplicationConfig = {
+  providers: [
+    provideLocalessServer({
+      origin: LOCALESS_URL,
+      spaceId: LOCALESS_SPACE,
+      token: LOCALESS_TOKEN
+    }),
+  ]
+};
+
+export const config = mergeApplicationConfig(appConfig, serverConfig);
 ````
