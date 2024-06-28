@@ -17,10 +17,13 @@ export type LocalessBrowserConfig = {
   debug?: boolean;
 };
 
-export const LOCALESS_BROWSER_CONFIG = new InjectionToken<LocalessBrowserConfig>('LOCALESS_BROWSER_CONFIG', {
-  providedIn: 'root',
-  factory: () =>  defaultBrowserConfig
-});
+export const LOCALESS_BROWSER_CONFIG = new InjectionToken<LocalessBrowserConfig>(
+  'LOCALESS_BROWSER_CONFIG',
+  {
+    providedIn: 'root',
+    factory: () => defaultBrowserConfig
+  }
+);
 
 export const defaultBrowserConfig: LocalessBrowserConfig = {
   origin: '',

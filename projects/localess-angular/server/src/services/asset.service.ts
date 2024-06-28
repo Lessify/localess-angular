@@ -11,8 +11,9 @@ import {ContentAsset} from "@localess/js-client";
 export class ServerAssetService {
 
   constructor(
-    @Inject(LOCALESS_SERVER_CONFIG) readonly config: LocalessServerConfig
+    @Inject(LOCALESS_SERVER_CONFIG) private readonly config: LocalessServerConfig
   ) {
+    console.log('[Localess]ServerAssetService', config);
   }
 
   /**

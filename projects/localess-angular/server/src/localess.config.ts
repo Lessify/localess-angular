@@ -25,10 +25,13 @@ export type LocalessServerConfig = {
   debug?: boolean;
 };
 
-export const LOCALESS_SERVER_CONFIG = new InjectionToken<LocalessServerConfig>('LOCALESS_SERVER_CONFIG', {
-  providedIn: 'root',
-  factory: () =>  defaultServerConfig
-});
+export const LOCALESS_SERVER_CONFIG = new InjectionToken<LocalessServerConfig>(
+  'LOCALESS_SERVER_CONFIG',
+  {
+    providedIn: 'root',
+    factory: () => defaultServerConfig
+  }
+);
 
 export const defaultServerConfig: LocalessServerConfig = {
   origin: '',
