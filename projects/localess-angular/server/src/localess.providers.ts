@@ -27,13 +27,13 @@ export type LocalessServerOptions = {
 };
 
 export function provideLocalessServer(options: LocalessServerOptions): EnvironmentProviders[] {
-  if (options.origin) {
+  if (options.origin === undefined || options.origin === '') {
     throw new Error('Localess Origin can\'t be empty');
   }
-  if (options.spaceId) {
+  if (options.spaceId === undefined || options.spaceId === '') {
     throw new Error('Localess Space ID can\'t be empty');
   }
-  if (options.token) {
+  if (options.token === undefined || options.token === '') {
     throw new Error('Localess Token can\'t be empty');
   }
   console.log('[Localess] provideLocalessServer', options);

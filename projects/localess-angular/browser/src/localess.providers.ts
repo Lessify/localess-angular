@@ -19,10 +19,10 @@ export type LocalessBrowserOptions = {
 };
 
 export function provideLocalessBrowser(options: LocalessBrowserOptions): EnvironmentProviders[] {
-  if (options.origin) {
+  if (options.origin === undefined || options.origin === '') {
     throw new Error('Localess Origin can\'t be empty');
   }
-  if (options.spaceId) {
+  if (options.spaceId === undefined || options.spaceId === '') {
     throw new Error('Localess Space ID can\'t be empty');
   }
   console.log('[Localess] provideLocalessBrowser', options);
