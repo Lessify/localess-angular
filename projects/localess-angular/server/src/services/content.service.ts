@@ -32,10 +32,17 @@ export class ServerContentService {
    */
   getContentBySlug(slug: string, params?: ContentFetchParams): Observable<Content> {
     let url = `${this.config.origin}/api/v1/spaces/${this.config.spaceId}/contents/slugs/${slug}`;
+    let version = '';
+    if (this.config.version && this.config.version == 'draft') {
+      version = `&version=${this.config.version}`;
+    }
+    if (params?.version && params.version == 'draft') {
+      version = `&version=${params.version}`;
+    }
     return this.httpClient.get<Content>(url, {
       params: {
         token: this.config.token,
-        version: params?.version == 'draft' ? params?.version : '',
+        version,
         locale: params?.locale || ''
       }
     });
@@ -49,10 +56,17 @@ export class ServerContentService {
    */
   getContentById(id: string, params?: ContentFetchParams): Observable<Content> {
     let url = `${this.config.origin}/api/v1/spaces/${this.config.spaceId}/contents/${id}`;
+    let version = '';
+    if (this.config.version && this.config.version == 'draft') {
+      version = `&version=${this.config.version}`;
+    }
+    if (params?.version && params.version == 'draft') {
+      version = `&version=${params.version}`;
+    }
     return this.httpClient.get<Content>(url, {
       params: {
         token: this.config.token,
-        version: params?.version == 'draft' ? params?.version : '',
+        version,
         locale: params?.locale || ''
       }
     });
