@@ -2,9 +2,7 @@ import {Inject, Injectable} from '@angular/core';
 import {LOCALESS_BROWSER_CONFIG, LocalessBrowserConfig} from "../localess.config";
 import {ContentAsset} from "@localess/js-client";
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class BrowserAssetService {
 
   constructor(
