@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, Component, inject} from "@angular/core";
-import {LOCALESS_BROWSER_CONFIG} from "../localess.config";
+import {Component} from "@angular/core";
+import {LocalessBrowserConfig} from "../localess.config";
 import {ContentAsset, ContentLink, Links} from "@localess/js-client";
 
 @Component({
@@ -9,16 +9,15 @@ import {ContentAsset, ContentLink, Links} from "@localess/js-client";
   host: {
     '[attr.data-ll-id]': 'id()'
   },
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export abstract class LocalessComponent implements LocalessId {
+export abstract class LocalessComponent {
 
-  config = inject(LOCALESS_BROWSER_CONFIG)
+  abstract config(): LocalessBrowserConfig;
 
   abstract id(): string;
 
   assetUrl(asset: ContentAsset): string {
-    return this.config.assetPathPrefix + asset.uri;
+    return this.config().assetPathPrefix + asset.uri;
   }
 
   findLink(links: Links, link: ContentLink): string {
@@ -37,8 +36,4 @@ export abstract class LocalessComponent implements LocalessId {
         return 'no-type'
     }
   }
-}
-
-export interface LocalessId {
-  id(): string;
 }
