@@ -12,6 +12,10 @@ export type LocalessBrowserConfig = {
    */
   spaceId: string;
   /**
+   * Path to the assets
+   */
+  assetPathPrefix: string;
+  /**
    * Enable debug mode
    */
   debug?: boolean;
@@ -28,4 +32,5 @@ export const LOCALESS_BROWSER_CONFIG = new InjectionToken<LocalessBrowserConfig>
 export const defaultBrowserConfig: LocalessBrowserConfig = {
   origin: '',
   spaceId: '',
+  assetPathPrefix: '',
 };

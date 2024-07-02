@@ -16,6 +16,10 @@ export type LocalessServerConfig = {
    */
   token: string;
   /**
+   * Path to the assets
+   */
+  assetPathPrefix: string;
+  /**
    * Content version to fetch, leave empty for 'published' or 'draft' for the latest draft
    */
   version?: 'draft' | string;
@@ -37,4 +41,5 @@ export const defaultServerConfig: LocalessServerConfig = {
   origin: '',
   spaceId: '',
   token: '',
+  assetPathPrefix: '',
 };

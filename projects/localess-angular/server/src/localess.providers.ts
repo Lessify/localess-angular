@@ -40,7 +40,10 @@ export function provideLocalessServer(options: LocalessServerOptions): Environme
     makeEnvironmentProviders([
       {
         provide: LOCALESS_SERVER_CONFIG,
-        useValue: options,
+        useValue: {
+          ...options,
+          assetPathPrefix: `${options.origin}/api/v1/spaces/${options.spaceId}/assets/`,
+        },
       },
     ])
   ];

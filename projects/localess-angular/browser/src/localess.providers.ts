@@ -1,5 +1,6 @@
 import {EnvironmentProviders, makeEnvironmentProviders} from "@angular/core";
 import {LOCALESS_BROWSER_CONFIG} from "./localess.config";
+import {IMAGE_LOADER, ImageLoaderConfig} from "@angular/common";
 
 export type LocalessBrowserOptions = {
   /**
@@ -29,7 +30,21 @@ export function provideLocalessBrowser(options: LocalessBrowserOptions): Environ
     makeEnvironmentProviders([
       {
         provide: LOCALESS_BROWSER_CONFIG,
-        useValue: options,
+        useValue: {
+          ...options,
+          assetPathPrefix: `${options.origin}/api/v1/spaces/${options.spaceId}/assets/`,
+        },
+      },
+      {
+        provide: IMAGE_LOADER,
+        useValue: (config: ImageLoaderConfig) => {
+          // optimize image for API assets
+          if (config.src.startsWith(`${options.origin}/api/v1/spaces/${options.spaceId}/assets/`) && config.width) {
+            return `${config.src}?w=${config.width}`;
+          } else {
+            return config.src;
+          }
+        },
       },
     ])
   ];
