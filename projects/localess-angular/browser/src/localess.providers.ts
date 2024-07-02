@@ -43,8 +43,14 @@ export function provideLocalessBrowser(options: LocalessBrowserOptions): Environ
           }
           // optimize image for API assets
           if (config.src.startsWith(`${options.origin}/api/v1/spaces/${options.spaceId}/assets/`) && config.width) {
+            if (options.debug) {
+              console.log('[Localess]ImageLoader match:true')
+            }
             return `${config.src}?w=${config.width}`;
           } else {
+            if (options.debug) {
+              console.log('[Localess]ImageLoader match:false')
+            }
             return config.src;
           }
         },
