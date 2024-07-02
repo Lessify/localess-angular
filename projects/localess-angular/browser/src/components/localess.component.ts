@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, HostBinding} from "@angular/core";
 import {LocalessBrowserConfig} from "../localess.config";
 import {ContentAsset, ContentLink, Links} from "@localess/js-client";
 
@@ -6,9 +6,9 @@ import {ContentAsset, ContentLink, Links} from "@localess/js-client";
   selector: 'll-component',
   standalone: true,
   template: '',
-  // host: {
-  //   '[attr.data-ll-id]': 'id()'
-  // },
+  host: {
+    '[attr.data-ll-id]': '123'
+  },
 })
 export abstract class LocalessComponent {
 
