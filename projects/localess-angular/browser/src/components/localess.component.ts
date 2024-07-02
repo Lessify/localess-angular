@@ -6,9 +6,9 @@ import {ContentAsset, ContentLink, Links} from "@localess/js-client";
   selector: 'll-component',
   standalone: true,
   template: '',
-  host: {
-    '[attr.data-ll-id]': 'id()'
-  },
+  // host: {
+  //   '[attr.data-ll-id]': 'id()'
+  // },
 })
 export abstract class LocalessComponent {
 
