@@ -5,6 +5,7 @@ import {ContentAsset, ContentLink, Links} from "@localess/js-client";
 @Component({
   selector: 'll-component',
   standalone: true,
+  template: '',
   host: {
     'data-ll-id': 'id'
   }
