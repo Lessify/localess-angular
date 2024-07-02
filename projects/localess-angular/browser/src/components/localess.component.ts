@@ -1,5 +1,5 @@
-import {Component, inject, Inject, OnInit} from "@angular/core";
-import {LOCALESS_BROWSER_CONFIG, LocalessBrowserConfig} from "../localess.config";
+import {Component, inject, OnInit} from "@angular/core";
+import {LOCALESS_BROWSER_CONFIG} from "../localess.config";
 import {ContentAsset, ContentLink, Links} from "@localess/js-client";
 
 @Component({
@@ -10,8 +10,7 @@ import {ContentAsset, ContentLink, Links} from "@localess/js-client";
     '[attr.data-ll-id]': 'id()'
   },
 })
-export abstract class LocalessComponent implements LocalessId, OnInit {
-
+export class LocalessComponent implements LocalessId, OnInit {
 
 
   config = inject(LOCALESS_BROWSER_CONFIG)
@@ -25,7 +24,9 @@ export abstract class LocalessComponent implements LocalessId, OnInit {
     console.log('LocalessComponent:ngOnInit', this.config)
   }
 
-  abstract id(): string;
+  id(): string {
+    return 'no-id'
+  };
 
   assetUrl(asset: ContentAsset): string {
     return this.config.assetPathPrefix + asset.uri;
