@@ -12,9 +12,12 @@ import {ContentAsset, ContentLink, Links} from "@localess/js-client";
 })
 export abstract class LocalessComponent implements LocalessId {
 
+
+  //config = inject(LOCALESS_BROWSER_CONFIG)
   protected constructor(
     @Inject(LOCALESS_BROWSER_CONFIG) public config: LocalessBrowserConfig
   ) {
+    console.log('LocalessComponent', this.config)
   }
 
   abstract id(): string;
