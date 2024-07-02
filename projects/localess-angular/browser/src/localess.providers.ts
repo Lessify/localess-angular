@@ -38,6 +38,9 @@ export function provideLocalessBrowser(options: LocalessBrowserOptions): Environ
       {
         provide: IMAGE_LOADER,
         useValue: (config: ImageLoaderConfig) => {
+          if (options.debug) {
+            console.log('[Localess]ImageLoader', config)
+          }
           // optimize image for API assets
           if (config.src.startsWith(`${options.origin}/api/v1/spaces/${options.spaceId}/assets/`) && config.width) {
             return `${config.src}?w=${config.width}`;
