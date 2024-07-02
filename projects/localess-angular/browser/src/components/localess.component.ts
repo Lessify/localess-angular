@@ -12,12 +12,12 @@ import {ContentAsset, ContentLink, Links} from "@localess/js-client";
 })
 export abstract class LocalessComponent implements LocalessId {
 
-  config = inject(LOCALESS_BROWSER_CONFIG)
+  config = inject(LOCALESS_BROWSER_CONFIG, {optional: true, self: true})
 
   abstract id(): string;
 
   assetUrl(asset: ContentAsset): string {
-    return this.config.assetPathPrefix + asset.uri;
+    return this.config?.assetPathPrefix + asset.uri;
   }
 
   findLink(links: Links, link: ContentLink): string{
