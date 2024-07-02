@@ -8,16 +8,16 @@ import {ContentAsset, ContentLink, Links} from "@localess/js-client";
   template: '',
   host: {
     '[attr.data-ll-id]': 'id()'
-  }
+  },
 })
 export abstract class LocalessComponent implements LocalessId {
 
-  config = inject(LOCALESS_BROWSER_CONFIG, {optional: true, self: true})
+  config = inject(LOCALESS_BROWSER_CONFIG)
 
   abstract id(): string;
 
   assetUrl(asset: ContentAsset): string {
-    return this.config?.assetPathPrefix + asset.uri;
+    return this.config.assetPathPrefix + asset.uri;
   }
 
   findLink(links: Links, link: ContentLink): string{
