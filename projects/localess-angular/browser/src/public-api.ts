@@ -17,3 +17,6 @@ export * from  './localess.providers';
 
 // Components
 export * from './components/localess.component';
+
+// Utils
+export * from './utils/link.utils';
