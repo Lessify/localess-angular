@@ -7,7 +7,7 @@ import {ContentAsset, ContentLink, Links} from "@localess/js-client";
   standalone: true,
   template: '',
   host: {
-    'data-ll-id': 'id'
+    '[data-ll-id]': 'id'
   }
 })
 export abstract class LocalessComponent implements LocalessId {
