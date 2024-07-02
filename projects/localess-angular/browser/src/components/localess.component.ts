@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, Component, Inject} from "@angular/core";
-import {LOCALESS_BROWSER_CONFIG, LocalessBrowserConfig} from "../localess.config";
+import {ChangeDetectionStrategy, Component, inject} from "@angular/core";
+import {LOCALESS_BROWSER_CONFIG} from "../localess.config";
 import {ContentAsset, ContentLink, Links} from "@localess/js-client";
 
 @Component({
@@ -13,12 +13,7 @@ import {ContentAsset, ContentLink, Links} from "@localess/js-client";
 })
 export abstract class LocalessComponent implements LocalessId {
 
-  protected constructor(
-    @Inject(LOCALESS_BROWSER_CONFIG) public config: LocalessBrowserConfig
-  ) {
-    console.log('LocalessComponent', this.config)
-  }
-
+  config = inject(LOCALESS_BROWSER_CONFIG)
 
   abstract id(): string;
 
