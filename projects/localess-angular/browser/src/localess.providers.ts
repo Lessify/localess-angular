@@ -1,4 +1,4 @@
-import {EnvironmentProviders, makeEnvironmentProviders, Provider} from "@angular/core";
+import {EnvironmentProviders, makeEnvironmentProviders} from "@angular/core";
 import {LOCALESS_BROWSER_CONFIG} from "./localess.config";
 import {IMAGE_LOADER, ImageLoaderConfig} from "@angular/common";
 
@@ -19,15 +19,15 @@ export type LocalessBrowserOptions = {
   debug?: boolean;
 };
 
-export function provideLocalessBrowser(options: LocalessBrowserOptions): (EnvironmentProviders | Provider)[] {
+export function provideLocalessBrowser(options: LocalessBrowserOptions): EnvironmentProviders[] {
   if (options.origin === undefined || options.origin === '') {
     throw new Error('Localess Origin can\'t be empty');
   }
   if (options.spaceId === undefined || options.spaceId === '') {
     throw new Error('Localess Space ID can\'t be empty');
   }
-  const providers: (EnvironmentProviders | Provider)[] = [
-    //makeEnvironmentProviders([
+  const providers: EnvironmentProviders[] = [
+    makeEnvironmentProviders([
       {
         provide: LOCALESS_BROWSER_CONFIG,
         useValue: {
@@ -49,7 +49,7 @@ export function provideLocalessBrowser(options: LocalessBrowserOptions): (Enviro
           }
         },
       },
-    //])
+    ])
   ];
   return providers;
 }

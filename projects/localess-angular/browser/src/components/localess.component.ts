@@ -1,5 +1,5 @@
-import {Component, inject} from "@angular/core";
-import {LOCALESS_BROWSER_CONFIG} from "../localess.config";
+import {Component, Inject} from "@angular/core";
+import {LOCALESS_BROWSER_CONFIG, LocalessBrowserConfig} from "../localess.config";
 import {ContentAsset, ContentLink, Links} from "@localess/js-client";
 
 @Component({
@@ -12,7 +12,10 @@ import {ContentAsset, ContentLink, Links} from "@localess/js-client";
 })
 export abstract class LocalessComponent implements LocalessId {
 
-  config = inject(LOCALESS_BROWSER_CONFIG)
+  protected constructor(
+    @Inject(LOCALESS_BROWSER_CONFIG) public config: LocalessBrowserConfig
+  ) {
+  }
 
   abstract id(): string;
 
@@ -20,7 +23,7 @@ export abstract class LocalessComponent implements LocalessId {
     return this.config.assetPathPrefix + asset.uri;
   }
 
-  findLink(links: Links, link: ContentLink): string{
+  findLink(links: Links, link: ContentLink): string {
     switch (link.type) {
       case "content": {
         const path = links[link.uri]
