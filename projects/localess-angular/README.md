@@ -43,18 +43,7 @@ export const appConfig: ApplicationConfig = {
     provideLocalessBrowser({
       origin: LOCALESS_URL,
       spaceId: LOCALESS_SPACE,
-    }),
-    {
-      provide: IMAGE_LOADER,
-      useValue: (config: ImageLoaderConfig) => {
-        // optimize image for API assets
-        if (config.src.startsWith(`${LOCALESS_URL}/api/`) && config.width) {
-          return `${config.src}?w=${config.width}`;
-        } else {
-          return config.src;
-        }
-      },
-    },
+    })
   ],
 };
 
