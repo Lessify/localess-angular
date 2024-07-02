@@ -1,4 +1,4 @@
-import {Component, inject, Inject, OnInit} from "@angular/core";
+import {ChangeDetectionStrategy, Component, Inject} from "@angular/core";
 import {LOCALESS_BROWSER_CONFIG, LocalessBrowserConfig} from "../localess.config";
 import {ContentAsset, ContentLink, Links} from "@localess/js-client";
 
@@ -9,6 +9,7 @@ import {ContentAsset, ContentLink, Links} from "@localess/js-client";
   host: {
     '[attr.data-ll-id]': 'id()'
   },
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export abstract class LocalessComponent implements LocalessId {
 
