@@ -14,7 +14,7 @@ export abstract class LocalessComponent implements LocalessId {
 
   config = inject(LOCALESS_BROWSER_CONFIG)
 
-  abstract get id(): string;
+  abstract id(): string;
 
   assetUrl(asset: ContentAsset): string {
     return this.config.assetPathPrefix + asset.uri;
@@ -39,5 +39,5 @@ export abstract class LocalessComponent implements LocalessId {
 }
 
 export interface LocalessId {
-  get id(): string;
+  id(): string;
 }
