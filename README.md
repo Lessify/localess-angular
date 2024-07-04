@@ -31,7 +31,7 @@ yarn add @localess/angular@latest
 
 ## Usage
 
-## Client Module
+## Client Provider
 
 ````ts
 const LOCALESS_URL = 'https://my-localess.web.app';
@@ -47,7 +47,66 @@ export const appConfig: ApplicationConfig = {
 };
 ````
 
-## Server Module
+## Client Base Component
+
+Create `LocalessComponenet` and extend it in your components.
+
+````ts
+import {Component, inject} from "@angular/core";
+import {ContentAsset, ContentLink, Links} from "@localess/js-client";
+import {findLink, LOCALESS_BROWSER_CONFIG} from "@localess/angular/browser";
+
+@Component({
+  selector: 'llw-component',
+  standalone: true,
+  template: '',
+  host: {
+    '[attr.data-ll-id]': 'id()'
+  },
+})
+export abstract class LocalessComponent {
+
+  config = inject(LOCALESS_BROWSER_CONFIG)
+
+  abstract id(): string;
+
+  assetUrl(asset: ContentAsset): string {
+    return this.config.assetPathPrefix + asset.uri;
+  }
+
+  findLink(links: Links, link: ContentLink): string {
+    return findLink(links, link);
+  }
+}
+````
+
+Now you can extend `LocalessComponent` in your components.
+
+Implement `id()` method to return the id of the component. It will help to identify the component in the Localess VisualEditor UI.
+
+Now you have access not to two utilities `assetUrl` and `findLink` to get the asset url and link url respectively.
+
+````ts
+@Component({
+  selector: 'llw-schema-hero-section',
+  standalone: true,
+  templateUrl: 'hero-section.component.html',
+  styleUrl: 'hero-section.component.scss',
+  imports: []
+})
+export default class HeroSectionComponent extends LocalessComponent {
+
+  data = input.required<HeroSection>();
+  links = input.required<Links>();
+
+  override id(): string {
+    return this.data()._id;
+  }
+}
+````
+
+
+## Server Provider
 
 ````ts
 const LOCALESS_URL = 'https://my-localess.web.app';
