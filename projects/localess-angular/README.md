@@ -84,7 +84,7 @@ Now you can extend `LocalessComponent` in your components.
 
 Implement `id()` method to return the id of the component. It will help to identify the component in the Localess VisualEditor UI.
 
-Now you have access not to two utilities `assetUrl` and `findLink` to get the asset url and link url respectively.
+Now you have access to two utilities `assetUrl` and `findLink` to get the asset url and link url respectively.
 
 ````ts
 @Component({
