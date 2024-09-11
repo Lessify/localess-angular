@@ -22,7 +22,7 @@ export class ServerContentService {
    */
   getLinks(): Observable<Links> {
     let url = `${this.config.origin}/api/v1/spaces/${this.config.spaceId}/links`;
-    return this.httpClient.get<Links>(url, {params: {token: this.config.token}});
+    return this.httpClient.get<Links>(url, {params: {token: this.config.token, includeChildren: true}});
   }
 
   /**
