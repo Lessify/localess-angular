@@ -43,13 +43,8 @@ export function provideLocalessBrowser(options: LocalessBrowserOptions): Environ
           }
           // optimize image for API assets
           if (config.src.startsWith(`${options.origin}/api/v1/spaces/${options.spaceId}/assets/`) && config.width) {
-            const url = `${config.src}?w=${config.width}`;
-            if (options.debug) {
-              console.log('[Localess]ImageLoader image ', url)
-            }
-            return url;
+            return `${config.src}?w=${config.width}`;
           } else {
-            console.log('[Localess]ImageLoader image ', config.src)
             return config.src;
           }
         },
