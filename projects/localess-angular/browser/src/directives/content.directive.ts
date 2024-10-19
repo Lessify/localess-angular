@@ -13,7 +13,8 @@ export class ContentDirective {}
 export class ContentIdDirective implements OnInit{
   id = input.required<string>({alias: 'llId'})
   constructor(
-    private el: ElementRef) {
+    private el: ElementRef
+  ) {
   }
   ngOnInit(): void {
     this.el.nativeElement.setAttribute('data-ll-id', this.id());
