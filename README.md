@@ -48,45 +48,15 @@ export const appConfig: ApplicationConfig = {
 ````
 
 ## Client Base Component
-
-Create `LocalessComponenet` and extend it in your components.
-
-````ts
-import {Component, inject} from "@angular/core";
-import {ContentAsset, ContentLink, Links} from "@localess/js-client";
-import {findLink, LOCALESS_BROWSER_CONFIG} from "@localess/angular/browser";
-
-@Component({
-  selector: 'llw-component',
-  standalone: true,
-  template: '',
-  host: {
-    '[attr.data-ll-id]': 'id()'
-  },
-})
-export abstract class LocalessComponent {
-
-  config = inject(LOCALESS_BROWSER_CONFIG)
-
-  abstract id(): string;
-
-  assetUrl(asset: ContentAsset): string {
-    return this.config.assetPathPrefix + asset.uri;
-  }
-
-  findLink(links: Links, link: ContentLink): string {
-    return findLink(links, link);
-  }
-}
-````
-
-Now you can extend `LocalessComponent` in your components.
+You can extend `LocalessComponent` in your components.
 
 Implement `id()` method to return the id of the component. It will help to identify the component in the Localess VisualEditor UI.
 
 Now you have access to two utilities `assetUrl` and `findLink` to get the asset url and link url respectively.
 
 ````ts
+import {LocalessComponent} from "@localess/angular/browser";
+
 @Component({
   selector: 'llw-schema-hero-section',
   standalone: true,
@@ -104,7 +74,6 @@ export default class HeroSectionComponent extends LocalessComponent {
   }
 }
 ````
-
 
 ## Server Provider
 
