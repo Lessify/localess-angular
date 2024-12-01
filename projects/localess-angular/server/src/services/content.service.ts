@@ -2,7 +2,11 @@ import {Inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {LOCALESS_SERVER_CONFIG, LocalessServerConfig} from "../localess.config";
-import {Content, ContentFetchParams, Links} from "@localess/js-client";
+import {Content, ContentFetchParams, Links, LinksFetchParams} from "@localess/js-client";
+
+interface ClientParams {
+  [param: string]: string | boolean
+}
 
 @Injectable({
   providedIn: 'root'
@@ -20,9 +24,24 @@ export class ServerContentService {
    * Get all links
    * @returns {Observable<Links>}
    */
-  getLinks(): Observable<Links> {
+  getLinks(params?: LinksFetchParams): Observable<Links> {
     let url = `${this.config.origin}/api/v1/spaces/${this.config.spaceId}/links`;
-    return this.httpClient.get<Links>(url, {params: {token: this.config.token}});
+    const clientParams: ClientParams = {}
+    if (params?.kind) {
+      clientParams['kind'] = params.kind;
+    }
+    if (params?.parentSlug) {
+      clientParams['parentSlug'] = params.parentSlug;
+    }
+    if (params?.excludeChildren) {
+      clientParams['excludeChildren'] = params.excludeChildren;
+    }
+    return this.httpClient.get<Links>(url, {
+      params: {
+        token: this.config.token,
+        ...clientParams
+      }
+    });
   }
 
   /**
@@ -33,18 +52,22 @@ export class ServerContentService {
    */
   getContentBySlug(slug: string, params?: ContentFetchParams): Observable<Content> {
     let url = `${this.config.origin}/api/v1/spaces/${this.config.spaceId}/contents/slugs/${slug}`;
-    let version = '';
+    const clientParams: ClientParams = {}
+    // Config
     if (this.config.version && this.config.version == 'draft') {
-      version = `&version=${this.config.version}`;
+      clientParams['version'] = this.config.version;
     }
+    // Params
     if (params?.version && params.version == 'draft') {
-      version = `&version=${params.version}`;
+      clientParams['version'] = params.version;
+    }
+    if (params?.locale) {
+      clientParams['locale'] = params.locale;
     }
     return this.httpClient.get<Content>(url, {
       params: {
         token: this.config.token,
-        version,
-        locale: params?.locale || ''
+        ...clientParams,
       }
     });
   }
@@ -57,18 +80,22 @@ export class ServerContentService {
    */
   getContentById(id: string, params?: ContentFetchParams): Observable<Content> {
     let url = `${this.config.origin}/api/v1/spaces/${this.config.spaceId}/contents/${id}`;
-    let version = '';
+    const clientParams: ClientParams = {}
+    // Config
     if (this.config.version && this.config.version == 'draft') {
-      version = `&version=${this.config.version}`;
+      clientParams['version'] = this.config.version;
     }
+    // Params
     if (params?.version && params.version == 'draft') {
-      version = `&version=${params.version}`;
+      clientParams['version'] = params.version;
+    }
+    if (params?.locale) {
+      clientParams['locale'] = params.locale;
     }
     return this.httpClient.get<Content>(url, {
       params: {
         token: this.config.token,
-        version,
-        locale: params?.locale || ''
+        ...clientParams
       }
     });
   }
