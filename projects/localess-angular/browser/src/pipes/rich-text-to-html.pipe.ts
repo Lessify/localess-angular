@@ -1,0 +1,13 @@
+import {Pipe, PipeTransform} from "@angular/core";
+import {toHtml} from 'hast-util-to-html';
+import type {Nodes, RootContent} from "hast";
+
+@Pipe({
+  name: "rtToHtml",
+  standalone: true,
+})
+export class RichTextToHtmlPipe implements PipeTransform {
+  transform(value: Array<RootContent> | Nodes): string {
+    return toHtml(value);
+  }
+}

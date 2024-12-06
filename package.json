@@ -1,6 +1,6 @@
 {
   "name": "@localess/angular",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "private": false,
   "description": "Angular Library for Localess's API. ",
   "keywords": [
@@ -42,6 +42,7 @@
     "@angular/platform-browser-dynamic": "^18.0.0",
     "@angular/router": "^18.0.0",
     "@localess/js-client": "~0.0.11",
+    "hast-util-to-html": "^9.0.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
