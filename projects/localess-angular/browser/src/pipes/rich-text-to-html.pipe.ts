@@ -7,7 +7,7 @@ import type {Nodes, RootContent} from "hast";
   standalone: true,
 })
 export class RichTextToHtmlPipe implements PipeTransform {
-  transform(value: Array<RootContent> | Nodes): string {
+  transform(value: Array<RootContent> | Nodes | any): string {
     return toHtml(value);
   }
 }
