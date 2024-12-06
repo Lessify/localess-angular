@@ -5,6 +5,7 @@
     "entryFile": "src/public-api.ts"
   },
   "allowedNonPeerDependencies": [
-    "@localess/js-client"
+    "@localess/js-client",
+    "hast-util-to-html"
   ]
 }
