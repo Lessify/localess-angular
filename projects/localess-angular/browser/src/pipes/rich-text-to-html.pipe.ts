@@ -3,7 +3,7 @@ import {toHtml} from 'hast-util-to-html';
 import type {Nodes, RootContent} from "hast";
 
 @Pipe({
-  name: "rtToHtml",
+  name: "llRtToHtml",
   standalone: true,
 })
 export class RichTextToHtmlPipe implements PipeTransform {

@@ -32,6 +32,7 @@ yarn add @localess/angular@latest
 ## Usage
 
 ## Client Provider
+Why do we need Client Provider, the provider is designed to be used on the client side only, as it **API Token** is not requires.
 
 ````ts
 const LOCALESS_URL = 'https://my-localess.web.app';
@@ -47,7 +48,7 @@ export const appConfig: ApplicationConfig = {
 };
 ````
 
-## Client Base Component
+### Client Base Component
 You can extend `LocalessComponent` in your components.
 
 Implement `id()` method to return the id of the component. It will help to identify the component in the Localess VisualEditor UI.
@@ -75,7 +76,22 @@ export default class HeroSectionComponent extends LocalessComponent {
 }
 ````
 
+### Directives
+You can use one of next directive `[data-ll-id]` or `[llId]` in case your don't extend `LocalessComponent` or your component has sub-schema, and you still wish to keep Visual Editor selection feature.
+
+### Pipes
+#### Asset
+Pipe `llAsset`, same feature as `LocalessComponent.assetUrl()` function, on in pipe.
+#### Link
+Pipe `llLink`, same feature as `LocalessComponent.findLink()` function, on in pipe.
+#### RichText to HTML
+Pipe `llRtToHtml`, used to transform **RichText** Schema into **HTML**.
+#### Safe HTML
+Pipe `llSafeHtml`, use to sanitizer **HTML** from **XSS security risks**.
+
 ## Server Provider
+
+Why do we need Server Provider, the provider is design to run on server side only, as it requires your **Localess API Token** to be kept secret.
 
 ````ts
 const LOCALESS_URL = 'https://my-localess.web.app';
