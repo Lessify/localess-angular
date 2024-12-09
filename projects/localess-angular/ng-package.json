@@ -6,6 +6,6 @@
   },
   "allowedNonPeerDependencies": [
     "@localess/js-client",
-    "hast-util-to-html"
+    "@tiptap/*"
   ]
 }
