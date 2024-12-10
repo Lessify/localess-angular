@@ -16,13 +16,16 @@ import Code from '@tiptap/extension-code';
 import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight';
 import Link from '@tiptap/extension-link';
 import Heading from '@tiptap/extension-heading';
+import {ContentRichText} from "@localess/js-client";
 
 @Pipe({
   name: "llRtToHtml",
   standalone: true,
 })
 export class RichTextToHtmlPipe implements PipeTransform {
-  transform(value: JSONContent | any): string {
+  transform(value: JSONContent | ContentRichText | string | any | undefined | null): string {
+    if (value === undefined || value === null) return '';
+    if (typeof value === 'string') return value;
     return generateHTML(value, [
       Document,
       Text,
