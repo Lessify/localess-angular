@@ -1,6 +1,6 @@
 import {Pipe, PipeTransform} from "@angular/core";
 import {JSONContent} from "@tiptap/core";
-import { generateHTML } from '@tiptap/html'
+import {generateHTML} from '@tiptap/html'
 import Bold from '@tiptap/extension-bold';
 import Italic from '@tiptap/extension-italic';
 import Strike from '@tiptap/extension-strike';
@@ -16,7 +16,7 @@ import Code from '@tiptap/extension-code';
 import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight';
 import Link from '@tiptap/extension-link';
 import Heading from '@tiptap/extension-heading';
-import {ContentRichText} from "@localess/js-client";
+import type {ContentRichText} from "@localess/js-client";
 
 @Pipe({
   name: "llRtToHtml",

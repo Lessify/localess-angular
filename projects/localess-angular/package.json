@@ -1,6 +1,6 @@
 {
   "name": "@localess/angular",
-  "version": "0.1.4",
+  "version": "0.2.2",
   "description": "Angular Library for Localess's API. ",
   "keywords": [
     "localess",
@@ -22,11 +22,12 @@
   "license": "MIT",
   "peerDependencies": {
     "@angular/common": "^18.0.0",
+    "@angular/compiler": "^18.0.0",
     "@angular/core": "^18.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0",
-    "@localess/js-client": "~0.1.0",
+    "@localess/js-client": "0.2.3-next.20241220-135957.0",
     "@tiptap/html": "^2.7.1",
     "@tiptap/extension-bold": "^2.7.1",
     "@tiptap/extension-italic": "^2.7.1",
@@ -43,9 +44,6 @@
     "@tiptap/extension-code-block-lowlight": "^2.7.1",
     "@tiptap/extension-link": "^2.7.1",
     "@tiptap/extension-heading": "^2.7.1"
-  },
-  "devDependencies": {
-    "@types/node": "^20.12.13"
   },
   "sideEffects": false
 }

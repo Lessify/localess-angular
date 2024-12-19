@@ -1,4 +1,4 @@
-import {ContentLink, Links} from "@localess/js-client";
+import type {ContentLink, Links} from "@localess/js-client";
 
 export function findLink(links: Links, link: ContentLink): string {
   switch (link.type) {

@@ -1,5 +1,7 @@
 // Components
 export * from './components/localess.component';
+export * from './components/schema.component';
+export * from './components/visual-editor.component';
 
 // Directive
 export * from './directives/content.directive';
@@ -13,6 +15,7 @@ export * from './pipes/safe-html.pipe';
 // Service
 export * from  './services/asset.service';
 export * from  './services/translation.service';
+export * from  './services/visual-editor.service';
 
 // Utils
 export * from './utils/link.utils';

@@ -1,5 +1,5 @@
 import {Inject, Pipe, PipeTransform} from "@angular/core";
-import {ContentAsset} from "@localess/js-client";
+import type {ContentAsset} from "@localess/js-client";
 import {LOCALESS_BROWSER_CONFIG, LocalessBrowserConfig} from "../localess.config";
 
 @Pipe({

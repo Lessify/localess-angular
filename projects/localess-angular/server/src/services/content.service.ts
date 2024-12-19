@@ -2,7 +2,7 @@ import {Inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {LOCALESS_SERVER_CONFIG, LocalessServerConfig} from "../localess.config";
-import {Content, ContentFetchParams, Links, LinksFetchParams} from "@localess/js-client";
+import type {Content, ContentFetchParams, Links, LinksFetchParams} from "@localess/js-client";
 
 interface ClientParams {
   [param: string]: string | boolean

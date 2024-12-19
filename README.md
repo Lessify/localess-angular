@@ -48,15 +48,34 @@ export const appConfig: ApplicationConfig = {
 };
 ````
 
-### Client Base Component
-You can extend `LocalessComponent` in your components.
+### Visual Editor Enable
+You can extend `VisualEditorComponent` in your main/app components.
+It will help to load all required scripts to enable Visual Editor sync.
+
+````ts
+import {VisualEditorComponent} from "@localess/angular/browser";
+
+@Component({
+  selector: 'llw-application',
+  standalone: true,
+  templateUrl: 'application.component.html',
+  styleUrl: 'application.component.scss',
+  imports: []
+})
+export default class HeroSectionComponent extends VisualEditorComponent {
+
+}
+````
+
+### Client Schema Component
+You can extend `SchemaComponent` in your components.
 
 Implement `id()` method to return the id of the component. It will help to identify the component in the Localess VisualEditor UI.
 
 Now you have access to two utilities `assetUrl` and `findLink` to get the asset url and link url respectively.
 
 ````ts
-import {LocalessComponent} from "@localess/angular/browser";
+import {SchemaComponent} from "@localess/angular/browser";
 
 @Component({
   selector: 'llw-schema-hero-section',
@@ -65,7 +84,7 @@ import {LocalessComponent} from "@localess/angular/browser";
   styleUrl: 'hero-section.component.scss',
   imports: []
 })
-export default class HeroSectionComponent extends LocalessComponent {
+export default class HeroSectionComponent extends SchemaComponent {
 
   data = input.required<HeroSection>();
   links = input.required<Links>();
