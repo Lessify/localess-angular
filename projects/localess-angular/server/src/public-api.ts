@@ -8,3 +8,6 @@ export * from  './localess.config';
 
 // Providers
 export * from  './localess.providers';
+
+//JS Client
+export * from  '@localess/js-client';

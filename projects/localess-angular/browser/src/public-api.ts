@@ -1,5 +1,7 @@
 // Components
 export * from './components/localess.component';
+export * from './components/schema.component';
+export * from './components/visual-editor.component';
 
 // Directive
 export * from './directives/content.directive';
