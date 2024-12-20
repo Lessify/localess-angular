@@ -8,7 +8,7 @@ import {isPlatformBrowser} from "@angular/common";
  * @since v0.2.0
  */
 @Component({
-  selector: 'll-component',
+  selector: 'll-visual-editor-component',
   standalone: true,
   template: '',
 })

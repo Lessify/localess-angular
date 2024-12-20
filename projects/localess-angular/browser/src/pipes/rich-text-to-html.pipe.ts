@@ -1,6 +1,6 @@
 import {Pipe, PipeTransform} from "@angular/core";
 import {JSONContent} from "@tiptap/core";
-import { generateHTML } from '@tiptap/html'
+import {generateHTML} from '@tiptap/html'
 import Bold from '@tiptap/extension-bold';
 import Italic from '@tiptap/extension-italic';
 import Strike from '@tiptap/extension-strike';

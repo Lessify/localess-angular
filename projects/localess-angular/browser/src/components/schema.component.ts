@@ -8,7 +8,7 @@ import {findLink} from "../utils/link.utils";
  * @since v0.2.0
  */
 @Component({
-  selector: 'll-component',
+  selector: 'll-schema-component',
   standalone: true,
   template: '',
   host: {
