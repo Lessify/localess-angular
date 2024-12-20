@@ -15,20 +15,24 @@ export class BrowserVisualEditorService {
   platformId = inject(PLATFORM_ID)
 
   constructor() {
-    console.log('[Localess]BrowserVisualEditorService');
+    if (this.config.debug) {
+      console.log('[Localess]BrowserVisualEditorService');
+    }
   }
 
   /**
    * Initiate Sync Script Load
    */
   init() {
-    console.log(`[Localess]BrowserVisualEditorService init():${this.platformId}`);
+    if (this.config.debug) {
+      console.log(`[Localess]BrowserVisualEditorService init():${this.platformId}`);
+    }
     if (isPlatformBrowser(this.platformId)) {
-      //if (window.top === window.self) return; // Skip if the page is not loaded in Visual Editor
-      //const isSyncLoaded = typeof window.localess !== 'undefined';
-      //if (isSyncLoaded) return; // Skip if Sync is already loaded
-      //const scriptEl = document.getElementById(JS_SYNC_ID);
-      //if (scriptEl) return; // Skip if script is already loaded
+      if (window.top === window.self) return; // Skip if the page is not loaded in Visual Editor
+      const isSyncLoaded = typeof window.localess !== 'undefined';
+      if (isSyncLoaded) return; // Skip if Sync is already loaded
+      const scriptEl = document.getElementById(JS_SYNC_ID);
+      if (scriptEl) return; // Skip if script is already loaded
       const script = document.createElement('script');
       script.id = JS_SYNC_ID;
       script.type = 'text/javascript';

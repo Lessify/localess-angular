@@ -1,6 +1,6 @@
 {
   "name": "@localess/angular",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "private": false,
   "description": "Angular Library for Localess's API. ",
   "keywords": [
