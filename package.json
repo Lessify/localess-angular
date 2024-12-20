@@ -41,7 +41,7 @@
     "@angular/platform-browser": "^18.0.0",
     "@angular/platform-browser-dynamic": "^18.0.0",
     "@angular/router": "^18.0.0",
-    "@localess/js-client": "0.2.3-next.20241220-135957.0",
+    "@localess/js-client": "0.2.2",
     "@tiptap/html": "^2.7.1",
     "@tiptap/extension-bold": "^2.7.1",
     "@tiptap/extension-italic": "^2.7.1",
