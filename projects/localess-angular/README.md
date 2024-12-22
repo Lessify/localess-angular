@@ -48,25 +48,6 @@ export const appConfig: ApplicationConfig = {
 };
 ````
 
-### Visual Editor Enable
-You can extend `VisualEditorComponent` in your main/app components.
-It will help to load all required scripts to enable Visual Editor sync.
-
-````ts
-import {VisualEditorComponent} from "@localess/angular/browser";
-
-@Component({
-  selector: 'llw-application',
-  standalone: true,
-  templateUrl: 'application.component.html',
-  styleUrl: 'application.component.scss',
-  imports: []
-})
-export default class HeroSectionComponent extends VisualEditorComponent {
-
-}
-````
-
 ### Client Schema Component
 You can extend `SchemaComponent` in your components.
 
@@ -96,17 +77,75 @@ export default class HeroSectionComponent extends SchemaComponent {
 ````
 
 ### Directives
-You can use one of next directive `[data-ll-id]` or `[llId]` in case your don't extend `LocalessComponent` or your component has sub-schema, and you still wish to keep Visual Editor selection feature.
+You can use one of the next directive `[data-ll-id]` or `[llId]` in case you don't extend `SchemaComponent` or your component has a sub-schema, and you still wish to keep the Visual Editor selection feature.
 
 ### Pipes
 #### Asset
-Pipe `llAsset`, same feature as `LocalessComponent.assetUrl()` function, on in pipe.
+Pipe `llAsset`, the same feature as `LocalessComponent.assetUrl()` function, on in pipe.
 #### Link
-Pipe `llLink`, same feature as `LocalessComponent.findLink()` function, on in pipe.
+Pipe `llLink`, the same feature as `LocalessComponent.findLink()` function, on in pipe.
 #### RichText to HTML
-Pipe `llRtToHtml`, used to transform **RichText** Schema into **HTML**.
+Pipe `llRtToHtml`, the used to transform **RichText** Schema into **HTML**.
 #### Safe HTML
-Pipe `llSafeHtml`, use to sanitizer **HTML** from **XSS security risks**.
+Pipe `llSafeHtml`, used to sanitizer **HTML** from **XSS security risks**.
+
+
+### Visual Editor Enable
+You can extend `VisualEditorComponent` in your main/app components.
+It will help to load all required scripts to enable Visual Editor sync.
+
+````ts
+import {Component, OnInit} from '@angular/core';
+import {RouterOutlet} from '@angular/router';
+import {BrowserVisualEditorService} from "@localess/angular/browser";
+
+@Component({
+  selector: 'll-root',
+  standalone: true,
+  imports: [RouterOutlet],
+  template: `
+    <router-outlet></router-outlet> `,
+})
+export class AppComponent implements OnInit {
+  constructor(
+    private readonly visualEditorService: BrowserVisualEditorService
+  ) {
+  }
+
+  ngOnInit(): void {
+    this.visualEditorService.init()
+  }
+}
+````
+
+### Listen for Visual Editor Events
+Your application can subscribe to the Localess Visual Editor Events :
+````ts
+@Component({
+  selector: 'll-slug',
+  standalone: true,
+  templateUrl: 'slug.component.html',
+  styleUrl: 'slug.component.scss',
+})
+export default class SlugComponent implements OnInit {
+  platformId = inject(PLATFORM_ID)
+  editorData = signal<any | undefined>(undefined);
+
+  ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      // check if you are in Framework Edit Mode
+      const isDraftMode = true;
+      if (isDraftMode && window.localess) {
+        window.localess.on(['input', 'change'], (event) => {
+          if (event.type === 'input' || event.type === 'change') {
+            this.editorData.set(event.data);
+          }
+        });
+      }
+    }
+  }
+}
+````
 
 ## Server Provider
 
