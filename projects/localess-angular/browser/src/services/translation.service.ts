@@ -1,7 +1,7 @@
-import {inject, Inject, Injectable} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {LOCALESS_BROWSER_CONFIG, LocalessBrowserConfig} from "../localess.config";
+import {LOCALESS_BROWSER_CONFIG} from "../localess.config";
 import type {Translations} from "@localess/js-client";
 
 @Injectable({

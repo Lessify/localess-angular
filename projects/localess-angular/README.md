@@ -51,7 +51,7 @@ export const appConfig: ApplicationConfig = {
 ### Client Schema Component
 You can extend `SchemaComponent` in your components.
 
-Implement `id()` method to return the id of the component. It will help to identify the component in the Localess VisualEditor UI.
+Implement `content()` method to return the `ContentData` of the component. It will help to identify the component in the Localess VisualEditor UI.
 
 Now you have access to two utilities `assetUrl` and `findLink` to get the asset url and link url respectively.
 
@@ -70,20 +70,20 @@ export default class HeroSectionComponent extends SchemaComponent {
   data = input.required<HeroSection>();
   links = input.required<Links>();
 
-  override id(): string {
-    return this.data()._id;
+  override content(): ContentData {
+    return this.data();
   }
 }
 ````
 
 ### Directives
-You can use one of the next directive `[data-ll-id]` or `[llId]` in case you don't extend `SchemaComponent` or your component has a sub-schema, and you still wish to keep the Visual Editor selection feature.
+You can use one of the next directive `[data-ll-id]` with `[data-ll-schema]` or `[llContent]` in case you don't extend `SchemaComponent` or your component has a sub-schema, and you still wish to keep the Visual Editor selection feature.
 
 ### Pipes
 #### Asset
-Pipe `llAsset`, the same feature as `LocalessComponent.assetUrl()` function, on in pipe.
+Pipe `llAsset`, the same feature as `SchemaComponent.assetUrl()` function, on in pipe.
 #### Link
-Pipe `llLink`, the same feature as `LocalessComponent.findLink()` function, on in pipe.
+Pipe `llLink`, the same feature as `SchemaComponent.findLink()` function, on in pipe.
 #### RichText to HTML
 Pipe `llRtToHtml`, the used to transform **RichText** Schema into **HTML**.
 #### Safe HTML

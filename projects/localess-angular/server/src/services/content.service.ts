@@ -1,7 +1,7 @@
-import {Inject, Injectable} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {LOCALESS_SERVER_CONFIG, LocalessServerConfig} from "../localess.config";
+import {LOCALESS_SERVER_CONFIG} from "../localess.config";
 import type {Content, ContentFetchParams, Links, LinksFetchParams} from "@localess/js-client";
 
 interface ClientParams {
@@ -12,12 +12,12 @@ interface ClientParams {
   providedIn: 'root'
 })
 export class ServerContentService {
+  config = inject(LOCALESS_SERVER_CONFIG)
 
   constructor(
     readonly httpClient: HttpClient,
-    @Inject(LOCALESS_SERVER_CONFIG) readonly config: LocalessServerConfig
   ) {
-    console.log('[Localess]ServerContentService', config);
+    console.log('[Localess]ServerContentService', this.config);
   }
 
   /**

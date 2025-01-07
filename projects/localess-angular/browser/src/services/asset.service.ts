@@ -1,5 +1,5 @@
-import {inject, Inject, Injectable} from '@angular/core';
-import {LOCALESS_BROWSER_CONFIG, LocalessBrowserConfig} from "../localess.config";
+import {inject, Injectable} from '@angular/core';
+import {LOCALESS_BROWSER_CONFIG} from "../localess.config";
 import type {ContentAsset} from "@localess/js-client";
 
 @Injectable({

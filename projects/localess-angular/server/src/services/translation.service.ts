@@ -1,19 +1,19 @@
-import {Inject, Injectable} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {LOCALESS_SERVER_CONFIG, LocalessServerConfig} from "../localess.config";
+import {LOCALESS_SERVER_CONFIG} from "../localess.config";
 import type {Translations} from "@localess/js-client";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServerTranslationService {
+  config = inject(LOCALESS_SERVER_CONFIG)
 
   constructor(
     readonly httpClient: HttpClient,
-    @Inject(LOCALESS_SERVER_CONFIG) readonly config: LocalessServerConfig
   ) {
-    console.log('[Localess]ServerTranslationService', config);
+    console.log('[Localess]ServerTranslationService', this.config);
   }
 
   /**
