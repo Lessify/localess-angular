@@ -1,6 +1,6 @@
 import {Component, inject} from "@angular/core";
 import {LOCALESS_BROWSER_CONFIG} from "../localess.config";
-import type {ContentAsset, ContentLink, Links} from "@localess/js-client";
+import type {ContentAsset, ContentLink, Links} from "../models";
 import {findLink} from "../utils/link.utils";
 
 /**

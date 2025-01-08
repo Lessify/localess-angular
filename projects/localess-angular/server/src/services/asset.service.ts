@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
 import {LOCALESS_SERVER_CONFIG} from "../localess.config";
-import type {ContentAsset} from "@localess/js-client";
+import type {ContentAsset} from "../models";
 
 @Injectable({
   providedIn: 'root'

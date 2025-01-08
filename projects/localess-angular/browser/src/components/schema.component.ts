@@ -1,6 +1,6 @@
 import {Component, inject} from "@angular/core";
 import {LOCALESS_BROWSER_CONFIG} from "../localess.config";
-import type {ContentData, ContentAsset, ContentLink, Links} from "@localess/js-client";
+import type {ContentDataSchema, ContentAsset, ContentLink, Links} from "../models";
 import {findLink} from "../utils/link.utils";
 
 /**
@@ -20,7 +20,7 @@ export abstract class SchemaComponent {
 
   config = inject(LOCALESS_BROWSER_CONFIG)
 
-  abstract content(): ContentData;
+  abstract content(): ContentDataSchema;
 
   assetUrl(asset: ContentAsset): string {
     return this.config.assetPathPrefix + asset.uri;

@@ -2,7 +2,7 @@ import {inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {LOCALESS_SERVER_CONFIG} from "../localess.config";
-import type {Translations} from "@localess/js-client";
+import type {Translations} from "../models";
 
 @Injectable({
   providedIn: 'root'

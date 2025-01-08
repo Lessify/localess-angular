@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from "@angular/core";
-import type {ContentLink, Links} from "@localess/js-client";
+import type {ContentLink, Links} from "../models";
 import {findLink} from "../utils/link.utils";
 
 @Pipe({

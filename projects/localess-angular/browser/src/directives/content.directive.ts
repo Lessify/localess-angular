@@ -1,5 +1,5 @@
 import {Directive, ElementRef, input, OnInit} from "@angular/core";
-import type {ContentData} from "@localess/js-client";
+import type {ContentDataSchema} from "../models";
 
 @Directive({
   selector: '[data-ll-id]',
@@ -18,7 +18,7 @@ export class ContentSchemaDirective {}
   standalone: true
 })
 export class ContentDirective implements OnInit{
-  content = input.required<ContentData>({alias: 'llContent'})
+  content = input.required<ContentDataSchema>({alias: 'llContent'})
   constructor(
     private el: ElementRef
   ) {
