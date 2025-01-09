@@ -2,4 +2,4 @@
  * Public API Surface of Localess
  */
 
-export * from './models';
+export * from '@localess/js-client';

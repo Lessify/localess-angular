@@ -70,7 +70,7 @@ export default class HeroSectionComponent extends SchemaComponent {
   data = input.required<HeroSection>();
   links = input.required<Links>();
 
-  override content(): ContentData {
+  override content(): ContentDataMetadata {
     return this.data();
   }
 }

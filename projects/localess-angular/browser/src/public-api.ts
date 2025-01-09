@@ -5,6 +5,9 @@ export * from './components/schema.component';
 // Directive
 export * from './directives/content.directive';
 
+// Models
+export type * from './models';
+
 // Pipe
 export * from './pipes/asset.pipe';
 export * from './pipes/link.pipe';
@@ -24,3 +27,6 @@ export * from  './localess.config';
 
 // Providers
 export * from  './localess.providers';
+
+// Sync
+export {LocalessSync, EventToApp, EventCallback, EventToAppType} from '@localess/js-client'

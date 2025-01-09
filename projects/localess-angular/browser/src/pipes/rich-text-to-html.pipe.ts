@@ -16,7 +16,7 @@ import Code from '@tiptap/extension-code';
 import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight';
 import Link from '@tiptap/extension-link';
 import Heading from '@tiptap/extension-heading';
-import type {ContentRichText} from "@localess/js-client";
+import type {ContentRichText} from "../models";
 
 @Pipe({
   name: "llRtToHtml",

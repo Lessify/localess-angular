@@ -1,3 +1,6 @@
+// Models
+export * from './models';
+
 // Service
 export * from './services/asset.service';
 export * from './services/content.service';
@@ -8,3 +11,5 @@ export * from './localess.config';
 
 // Providers
 export * from './localess.providers';
+
+export {localessClient, LocalessClientOptions, LinksFetchParams, ContentFetchParams} from '@localess/js-client';
