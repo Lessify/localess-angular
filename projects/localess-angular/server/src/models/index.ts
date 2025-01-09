@@ -9,5 +9,7 @@ export type {
   ContentRichText,
   ContentReference,
   Links,
-  Translations
+  Translations,
+  ContentFetchParams,
+  LinksFetchParams
 } from '@localess/js-client';

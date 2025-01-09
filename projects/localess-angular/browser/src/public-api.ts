@@ -29,4 +29,4 @@ export * from  './localess.config';
 export * from  './localess.providers';
 
 // Sync
-export {LocalessSync} from '@localess/js-client'
+export {LocalessSync, EventToApp, EventCallback, EventToAppType} from '@localess/js-client'
