@@ -16,11 +16,11 @@ import {findLink} from "../utils/link.utils";
     '[attr.data-ll-schema]': 'content().schema'
   },
 })
-export abstract class SchemaComponent {
+export abstract class SchemaComponent<T extends ContentDataSchema = ContentDataSchema> {
 
   config = inject(LOCALESS_BROWSER_CONFIG)
 
-  abstract content(): ContentDataSchema;
+  abstract content(): T;
 
   assetUrl(asset: ContentAsset): string {
     return this.config.assetPathPrefix + asset.uri;

@@ -14,6 +14,6 @@ export class AssetPipe implements PipeTransform {
   }
 
   transform(asset: ContentAsset): string {
-      return `${this.config.assetPathPrefix}${asset.uri}`;
+    return `${this.config.assetPathPrefix}${asset.uri}`;
   }
 }
