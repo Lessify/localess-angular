@@ -6,7 +6,7 @@ import {findLink} from "../utils/link.utils";
 /**
  * @since 0.1.0
  * @deprecated starting with v0.2.0, it will be removed in future versions.
- * Please use SchemaComponent instead.
+ * Please use SchemaComponent or SchemaWithInputComponent instead.
  */
 @Component({
   selector: 'll-component',

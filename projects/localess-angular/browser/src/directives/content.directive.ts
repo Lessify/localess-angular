@@ -36,6 +36,6 @@ export class ContentDirective implements OnInit {
 
   ngOnInit(): void {
     this.el.nativeElement.setAttribute('data-ll-id', this.content()._id);
-    this.el.nativeElement.setAttribute('data-ll-schema', this.content().schema);
+    this.el.nativeElement.setAttribute('data-ll-schema', this.content()._schema || this.content().schema);
   }
 }
