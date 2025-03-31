@@ -12,8 +12,8 @@ import {findLink} from "../utils/link.utils";
   standalone: true,
   template: '',
   host: {
-    '[attr.data-ll-id]': 'data()._id',
-    '[attr.data-ll-schema]': 'data()._schema || data().schema'
+    '[attr.data-ll-id]': 'data._id',
+    '[attr.data-ll-schema]': 'data._schema || data.schema'
   },
 })
 export abstract class SchemaWithInputComponent<T extends ContentDataSchema = ContentDataSchema> {
