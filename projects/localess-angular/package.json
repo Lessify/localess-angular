@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "tslib": "^2.3.0",
-    "@localess/js-client": "0.5.1",
+    "@localess/js-client": "0.6.1-next.20250331-165335.0",
     "@tiptap/html": "^2.7.1",
     "@tiptap/extension-bold": "^2.7.1",
     "@tiptap/extension-italic": "^2.7.1",

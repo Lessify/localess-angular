@@ -1,5 +1,6 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {ContentData} from '@localess/js-client';
 import {Observable} from 'rxjs';
 import {LOCALESS_SERVER_CONFIG} from "../localess.config";
 import type {Content, Links, ContentFetchParams, LinksFetchParams} from "../models";
@@ -50,7 +51,7 @@ export class ServerContentService {
    * @param params{ContentFetchParams} - Fetch parameters
    * @returns {Observable<Content>}
    */
-  getContentBySlug(slug: string, params?: ContentFetchParams): Observable<Content> {
+  getContentBySlug<T extends ContentData = ContentData>(slug: string, params?: ContentFetchParams): Observable<Content<T>> {
     let url = `${this.config.origin}/api/v1/spaces/${this.config.spaceId}/contents/slugs/${slug}`;
     const clientParams: ClientParams = {}
     // Config
@@ -64,7 +65,7 @@ export class ServerContentService {
     if (params?.locale) {
       clientParams['locale'] = params.locale;
     }
-    return this.httpClient.get<Content>(url, {
+    return this.httpClient.get<Content<T>>(url, {
       params: {
         token: this.config.token,
         ...clientParams,
@@ -78,7 +79,7 @@ export class ServerContentService {
    * @param params{ContentFetchParams} - Fetch parameters
    * @returns {Observable<Content>}
    */
-  getContentById(id: string, params?: ContentFetchParams): Observable<Content> {
+  getContentById<T extends ContentData = ContentData>(id: string, params?: ContentFetchParams): Observable<Content<T>> {
     let url = `${this.config.origin}/api/v1/spaces/${this.config.spaceId}/contents/${id}`;
     const clientParams: ClientParams = {}
     // Config
@@ -92,7 +93,7 @@ export class ServerContentService {
     if (params?.locale) {
       clientParams['locale'] = params.locale;
     }
-    return this.httpClient.get<Content>(url, {
+    return this.httpClient.get<Content<T>>(url, {
       params: {
         token: this.config.token,
         ...clientParams
