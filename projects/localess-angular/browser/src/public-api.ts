@@ -2,6 +2,7 @@
 export * from './components/localess.component';
 export * from './components/schema.component';
 export * from './components/schema-with-input.component';
+export * from './components/schema-with-signal.component';
 
 // Directive
 export * from './directives/content.directive';
