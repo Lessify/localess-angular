@@ -1,4 +1,5 @@
 import {Component, inject, Input, input} from "@angular/core";
+import {ContentData} from '@localess/js-client';
 import {LOCALESS_BROWSER_CONFIG} from "../localess.config";
 import type {ContentDataSchema, ContentAsset, ContentLink, Links} from "../models";
 import {findLink} from "../utils/link.utils";
@@ -16,7 +17,7 @@ import {findLink} from "../utils/link.utils";
     '[attr.data-ll-schema]': 'data._schema || data.schema'
   },
 })
-export abstract class SchemaWithInputComponent<T extends ContentDataSchema = ContentDataSchema> {
+export abstract class SchemaWithInputComponent<T extends ContentData = ContentData> {
 
   config = inject(LOCALESS_BROWSER_CONFIG)
 
