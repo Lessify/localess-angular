@@ -1,5 +1,5 @@
-import {inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {inject, Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {LOCALESS_SERVER_CONFIG} from "../localess.config";
 import type {Translations} from "../models";
@@ -21,6 +21,6 @@ export class ServerTranslationService {
    */
   fetch(locale: string): Observable<Translations> {
     let url = `${this.config.origin}/api/v1/spaces/${this.config.spaceId}/translations/${locale}`;
-    return this.httpClient.get<Translations>(url);
+    return this.httpClient.get<Translations>(url, {params: {token: this.config.token}});
   }
 }

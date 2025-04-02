@@ -18,7 +18,6 @@ export * from './pipes/safe-html.pipe';
 
 // Service
 export * from  './services/asset.service';
-export * from  './services/translation.service';
 export * from  './services/visual-editor.service';
 
 // Utils

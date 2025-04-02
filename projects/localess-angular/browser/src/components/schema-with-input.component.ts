@@ -1,7 +1,7 @@
-import {Component, inject, Input, input} from "@angular/core";
+import {Component, inject, Input} from "@angular/core";
 import {ContentData} from '@localess/js-client';
 import {LOCALESS_BROWSER_CONFIG} from "../localess.config";
-import type {ContentDataSchema, ContentAsset, ContentLink, Links} from "../models";
+import type {ContentAsset, ContentLink, Links} from "../models";
 import {findLink} from "../utils/link.utils";
 
 /**
@@ -24,7 +24,7 @@ export abstract class SchemaWithInputComponent<T extends ContentData = ContentDa
   @Input({required: true})
   data!: T;
   @Input({required: false})
-  links: Links | undefined;
+  links?: Links;
 
   assetUrl(asset: ContentAsset): string {
     return this.config.assetPathPrefix + asset.uri;
