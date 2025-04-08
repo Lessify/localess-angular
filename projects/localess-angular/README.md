@@ -73,6 +73,29 @@ export default class HeroSectionComponent extends SchemaWithInputComponent<HeroS
 }
 ````
 
+#### Schema with Signal Input
+You can extend `SchemaWithSignalComponent` in your components.
+
+Your component will require `data` input for schema data and optional `links` input to share links to be resolved by `findLink` method.
+It will help to identify the component in the Localess VisualEditor UI.
+
+Now you have access to two utilities `assetUrl` and `findLink` to get the asset url and link url respectively.
+
+````ts
+import {SchemaWithSignalComponent} from "@localess/angular/browser";
+
+@Component({
+  selector: 'llw-schema-hero-section',
+  standalone: true,
+  templateUrl: 'hero-section.component.html',
+  styleUrl: 'hero-section.component.scss',
+  imports: []
+})
+export default class HeroSectionComponent extends SchemaWithSignalComponent<HeroSection> {
+  
+}
+````
+
 #### Schema without Input
 You can extend `SchemaComponent` in your components.
 
