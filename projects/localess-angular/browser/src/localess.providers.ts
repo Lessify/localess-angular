@@ -1,6 +1,7 @@
-import {EnvironmentProviders, makeEnvironmentProviders} from "@angular/core";
-import {LOCALESS_BROWSER_CONFIG} from "./localess.config";
 import {IMAGE_LOADER, ImageLoaderConfig} from "@angular/common";
+import {EnvironmentProviders, makeEnvironmentProviders} from "@angular/core";
+import {loadLocalessSync} from '@localess/js-client';
+import {LOCALESS_BROWSER_CONFIG} from "./localess.config";
 
 export type LocalessBrowserOptions = {
   /**
@@ -10,39 +11,50 @@ export type LocalessBrowserOptions = {
    */
   origin: string;
   /**
-   * Localess space ID, cna be found in the Localess Space settings
+   * Localess space ID can be found in the Localess Space settings
    */
   spaceId: string;
   /**
    * Enable debug mode
    */
   debug?: boolean;
+  /**
+   * Enable Sync Script Load
+   */
+  enableSync?: boolean;
 };
 
 export function provideLocalessBrowser(options: LocalessBrowserOptions): EnvironmentProviders[] {
-  if (options.origin === undefined || options.origin === '') {
+  const {origin, spaceId, debug, enableSync} = options;
+  if (origin === undefined || origin === '') {
     throw new Error('Localess Origin can\'t be empty');
   }
-  if (options.spaceId === undefined || options.spaceId === '') {
+  if (spaceId === undefined || spaceId === '') {
     throw new Error('Localess Space ID can\'t be empty');
   }
-  const providers: EnvironmentProviders[] = [
+  if (enableSync) {
+    console.log('[Localess] enableSync', enableSync)
+    loadLocalessSync(origin);
+  }
+  return [
     makeEnvironmentProviders([
       {
         provide: LOCALESS_BROWSER_CONFIG,
         useValue: {
-          ...options,
+          origin,
+          spaceId,
+          debug,
           assetPathPrefix: `${options.origin}/api/v1/spaces/${options.spaceId}/assets/`,
         },
       },
       {
         provide: IMAGE_LOADER,
         useValue: (config: ImageLoaderConfig) => {
-          if (options.debug) {
+          if (debug) {
             console.log('[Localess]ImageLoader', config)
           }
           // optimize image for API assets
-          if (config.src.startsWith(`${options.origin}/api/v1/spaces/${options.spaceId}/assets/`) && config.width) {
+          if (config.src.startsWith(`${origin}/api/v1/spaces/${spaceId}/assets/`) && config.width) {
             return `${config.src}?w=${config.width}`;
           } else {
             return config.src;
@@ -51,5 +63,4 @@ export function provideLocalessBrowser(options: LocalessBrowserOptions): Environ
       },
     ])
   ];
-  return providers;
 }

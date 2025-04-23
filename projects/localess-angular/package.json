@@ -1,6 +1,6 @@
 {
   "name": "@localess/angular",
-  "version": "0.6.0",
+  "version": "0.8.0",
   "description": "Angular Library for Localess's API. ",
   "keywords": [
     "localess",
@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "tslib": "^2.3.0",
-    "@localess/js-client": "0.6.1-next.20250402-201511.0",
+    "@localess/js-client": "0.8.0",
     "@tiptap/html": "^2.7.1",
     "@tiptap/extension-bold": "^2.7.1",
     "@tiptap/extension-italic": "^2.7.1",

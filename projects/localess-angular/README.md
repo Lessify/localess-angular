@@ -32,7 +32,7 @@ yarn add @localess/angular@latest
 ## Usage
 
 ## Client Provider
-Why do we need Client Provider, the provider is designed to be used on the client side only, as it **API Token** is not requires.
+Why do we need Client Provider, the provider is designed to be used on the client side only, as it **API Token** is not required.
 
 ````ts
 const LOCALESS_URL = 'https://my-localess.web.app';
@@ -43,6 +43,7 @@ export const appConfig: ApplicationConfig = {
     provideLocalessBrowser({
       origin: LOCALESS_URL,
       spaceId: LOCALESS_SPACE,
+      enableSync: true, //Enable Visual Editor Sync Script
     }),
   ],
 };
@@ -125,7 +126,7 @@ export default class HeroSectionComponent extends SchemaComponent {
 ````
 
 ### Directives
-You can use one of the next directive `[data-ll-id]` with `[data-ll-schema]` or `[llContent]` in case you don't extend `SchemaComponent` or your component has a sub-schema, and you still wish to keep the Visual Editor selection feature.
+You can use one of the next directive `[data-ll-id]` with `[data-ll-schema]` or `[llContent]` in a case you don't extend `SchemaComponent` or your component has a sub-schema, and you still wish to keep the Visual Editor selection feature.
 
 ### Pipes
 #### Asset
@@ -136,35 +137,6 @@ Pipe `llLink`, the same feature as `SchemaComponent.findLink()` function, on in 
 Pipe `llRtToHtml`, the used to transform **RichText** Schema into **HTML**.
 #### Safe HTML
 Pipe `llSafeHtml`, used to sanitizer **HTML** from **XSS security risks**.
-
-
-### Visual Editor Enable
-You can extend `VisualEditorComponent` in your main/app components.
-It will help to load all required scripts to enable Visual Editor sync.
-
-````ts
-import {Component, OnInit} from '@angular/core';
-import {RouterOutlet} from '@angular/router';
-import {BrowserVisualEditorService} from "@localess/angular/browser";
-
-@Component({
-  selector: 'll-root',
-  standalone: true,
-  imports: [RouterOutlet],
-  template: `
-    <router-outlet></router-outlet> `,
-})
-export class AppComponent implements OnInit {
-  constructor(
-    private readonly visualEditorService: BrowserVisualEditorService
-  ) {
-  }
-
-  ngOnInit(): void {
-    this.visualEditorService.init()
-  }
-}
-````
 
 ### Listen for Visual Editor Events
 Your application can subscribe to the Localess Visual Editor Events :
@@ -197,7 +169,7 @@ export default class SlugComponent implements OnInit {
 
 ## Server Provider
 
-Why do we need Server Provider, the provider is design to run on server side only, as it requires your **Localess API Token** to be kept secret.
+Why do we need Server Provider; the provider is designed to run on the server side only, as it requires your **Localess API Token** to be kept secret.
 
 ````ts
 const LOCALESS_URL = 'https://my-localess.web.app';

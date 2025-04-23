@@ -8,7 +8,7 @@ export type LocalessBrowserConfig = {
    */
   origin: string;
   /**
-   * Localess space ID, cna be found in the Localess Space settings
+   * Localess space ID can be found in the Localess Space settings
    */
   spaceId: string;
   /**
