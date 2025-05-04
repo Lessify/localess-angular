@@ -31,7 +31,7 @@ yarn add @localess/angular@latest
 
 ## Usage
 
-### Client Provider
+### Client Provider and Visual Editor
 The Client Provider is designed to be used only on the client side, as an **API Token** is not required.
 
 ````ts
