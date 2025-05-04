@@ -31,8 +31,8 @@ yarn add @localess/angular@latest
 
 ## Usage
 
-## Client Provider
-Why do we need Client Provider, the provider is designed to be used on the client side only, as it **API Token** is not required.
+### Client Provider
+The Client Provider is designed to be used only on the client side, as an **API Token** is not required.
 
 ````ts
 const LOCALESS_URL = 'https://my-localess.web.app';
@@ -52,12 +52,12 @@ export const appConfig: ApplicationConfig = {
 ### Client Schema Component
 
 #### Schema with Input
-You can extend `SchemaWithInputComponent` in your components.
+You can extend `SchemaWithInputComponent` In your components.
 
-Your component will require `data` input for schema data and optional `links` input to share links to be resolved by `findLink` method.
+Your component will require `data` input for schema data and an optional `links` Input to share links to be resolved by the `findLink` method.
 It will help to identify the component in the Localess VisualEditor UI.
 
-Now you have access to two utilities `assetUrl` and `findLink` to get the asset url and link url respectively.
+Now you have access to two utilities `assetUrl` and `findLink` to get the asset URL and link URL, respectively.
 
 ````ts
 import {SchemaWithInputComponent} from "@localess/angular/browser";
@@ -77,10 +77,10 @@ export default class HeroSectionComponent extends SchemaWithInputComponent<HeroS
 #### Schema with Signal Input
 You can extend `SchemaWithSignalComponent` in your components.
 
-Your component will require `data` input for schema data and optional `links` input to share links to be resolved by `findLink` method.
+Your component will require `data` input for schema data and an optional `links` Input to share links to be resolved by the `findLink` method.
 It will help to identify the component in the Localess VisualEditor UI.
 
-Now you have access to two utilities `assetUrl` and `findLink` to get the asset url and link url respectively.
+Now you have access to two utilities `assetUrl` and `findLink` to get the asset URL and link URL, respectively.
 
 ````ts
 import {SchemaWithSignalComponent} from "@localess/angular/browser";
@@ -100,9 +100,10 @@ export default class HeroSectionComponent extends SchemaWithSignalComponent<Hero
 #### Schema without Input
 You can extend `SchemaComponent` in your components.
 
-Implement `content()` method to return the `ContentData` of the component. It will help to identify the component in the Localess VisualEditor UI.
+Implement the `content()` method to return the `ContentData`. 
+It will help to identify the component in the Localess VisualEditor UI.
 
-Now you have access to two utilities `assetUrl` and `findLink` to get the asset url and link url respectively.
+Now you have access to two utilities `assetUrl` and `findLink` to get the asset URL and link URL, respectively.
 
 ````ts
 import {SchemaComponent} from "@localess/angular/browser";
