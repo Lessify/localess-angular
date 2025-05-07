@@ -16,7 +16,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.serverContentService.getLinks().subscribe({
-      next: value => this.links.set(value)
+      next: value => {
+        console.log(value)
+        this.links.set(value)
+      }
     })
   }
 }
