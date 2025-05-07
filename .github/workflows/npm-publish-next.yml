@@ -13,7 +13,7 @@ on:
       - tsconfig.json
 
 jobs:
-  build:
+  localess-angular:
     runs-on: ubuntu-latest
     steps:
       - name: Check out
@@ -31,7 +31,7 @@ jobs:
           cd projects/localess-angular
           npm --no-git-tag-version version prerelease --preid next.$(date +'%Y%m%d-%H%M%S')
       - name: Build 🏗️
-        run: npm run build
+        run: npm run build::localess
       - name: Publish package on NPM 📦
         run: |
           cd dist/localess-angular

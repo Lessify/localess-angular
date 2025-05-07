@@ -10,7 +10,10 @@
     "paths": {
       "localess-angular": [
         "./dist/localess-angular"
-      ]
+      ],
+      "@localess/angular": ["./projects/localess-angular/src/public-api.ts"],
+      "@localess/angular/browser": ["./projects/localess-angular/browser/src/public-api.ts"],
+      "@localess/angular/server": ["./projects/localess-angular/server/src/public-api.ts"]
     },
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
