@@ -11,7 +11,7 @@ export class ServerTranslationService {
   config = inject(LOCALESS_SERVER_CONFIG)
 
   constructor(
-    readonly httpClient: HttpClient,
+    private readonly httpClient: HttpClient,
   ) {
     console.log('[Localess]ServerTranslationService', this.config);
   }

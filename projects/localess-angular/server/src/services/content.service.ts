@@ -16,7 +16,7 @@ export class ServerContentService {
   config = inject(LOCALESS_SERVER_CONFIG)
 
   constructor(
-    readonly httpClient: HttpClient,
+    private readonly httpClient: HttpClient,
   ) {
     console.log('[Localess]ServerContentService', this.config);
   }
