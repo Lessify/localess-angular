@@ -37,6 +37,9 @@ export class ServerContentService {
     if (params?.excludeChildren) {
       clientParams['excludeChildren'] = params.excludeChildren;
     }
+    if (this.config.debug) {
+      console.log('[Localess] getLinks', url, clientParams);
+    }
     return this.httpClient.get<Links>(url, {
       params: {
         token: this.config.token,
