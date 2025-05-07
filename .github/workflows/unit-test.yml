@@ -20,4 +20,4 @@ jobs:
           cache: npm
       - run: npm install
       #- run: npm run lint
-      - run: npm run build::localess
+      - run: npm run build:localess

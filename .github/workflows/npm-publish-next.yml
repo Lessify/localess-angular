@@ -31,7 +31,7 @@ jobs:
           cd projects/localess-angular
           npm --no-git-tag-version version prerelease --preid next.$(date +'%Y%m%d-%H%M%S')
       - name: Build 🏗️
-        run: npm run build::localess
+        run: npm run build:localess
       - name: Publish package on NPM 📦
         run: |
           cd dist/localess-angular

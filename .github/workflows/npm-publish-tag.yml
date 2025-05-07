@@ -27,7 +27,7 @@ jobs:
       - name: Install 🏗️
         run: npm install
       - name: Build 🏗️
-        run: npm run build::localess
+        run: npm run build:localess
       - name: Publish package on NPM 📦
         run: |
           cd dist/localess-angular
