@@ -2,14 +2,12 @@ import {inject, Injectable} from '@angular/core';
 import {LOCALESS_BROWSER_CONFIG} from "../localess.config";
 import type {ContentAsset} from "../models";
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class BrowserAssetService {
   config = inject(LOCALESS_BROWSER_CONFIG)
   constructor() {
     if (this.config.debug) {
-      console.log('[Localess]BrowserAssetService', this.config);
+      console.log('[Localess] BrowserAssetService', this.config);
     }
   }
 

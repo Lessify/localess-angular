@@ -2,6 +2,7 @@ import {IMAGE_LOADER, ImageLoaderConfig} from "@angular/common";
 import {EnvironmentProviders, makeEnvironmentProviders} from "@angular/core";
 import {loadLocalessSync} from '@localess/js-client';
 import {LOCALESS_BROWSER_CONFIG} from "./localess.config";
+import {BrowserAssetService} from './services/asset.service';
 
 export type LocalessBrowserOptions = {
   /**
@@ -51,7 +52,7 @@ export function provideLocalessBrowser(options: LocalessBrowserOptions): Environ
         provide: IMAGE_LOADER,
         useValue: (config: ImageLoaderConfig) => {
           if (debug) {
-            console.log('[Localess]ImageLoader', config)
+            console.log('[Localess] ImageLoader', config)
           }
           // optimize image for API assets
           if (config.src.startsWith(`${origin}/api/v1/spaces/${spaceId}/assets/`) && config.width) {
@@ -61,6 +62,7 @@ export function provideLocalessBrowser(options: LocalessBrowserOptions): Environ
           }
         },
       },
+      BrowserAssetService,
     ])
   ];
 }

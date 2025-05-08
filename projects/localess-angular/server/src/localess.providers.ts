@@ -1,5 +1,8 @@
 import {EnvironmentProviders, makeEnvironmentProviders} from "@angular/core";
 import {LOCALESS_SERVER_CONFIG} from "./localess.config";
+import {ServerAssetService} from './services/asset.service';
+import {ServerContentService} from './services/content.service';
+import {ServerTranslationService} from './services/translation.service';
 
 export type LocalessServerOptions = {
   /**
@@ -45,6 +48,9 @@ export function provideLocalessServer(options: LocalessServerOptions): Environme
           assetPathPrefix: `${options.origin}/api/v1/spaces/${options.spaceId}/assets/`,
         },
       },
+      ServerAssetService,
+      ServerContentService,
+      ServerTranslationService,
     ])
   ];
   return providers;

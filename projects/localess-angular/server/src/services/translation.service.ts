@@ -4,16 +4,14 @@ import {Observable} from 'rxjs';
 import {LOCALESS_SERVER_CONFIG} from "../localess.config";
 import type {Translations} from "../models";
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ServerTranslationService {
   config = inject(LOCALESS_SERVER_CONFIG)
 
   constructor(
     private readonly httpClient: HttpClient,
   ) {
-    console.log('[Localess]ServerTranslationService', this.config);
+    console.log('[Localess] ServerTranslationService', this.config);
   }
 
   /**

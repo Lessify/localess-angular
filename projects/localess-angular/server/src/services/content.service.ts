@@ -9,16 +9,14 @@ interface ClientParams {
   [param: string]: string | boolean
 }
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ServerContentService {
   config = inject(LOCALESS_SERVER_CONFIG)
 
   constructor(
     private readonly httpClient: HttpClient,
   ) {
-    console.log('[Localess]ServerContentService', this.config);
+    console.log('[Localess] ServerContentService', this.config);
   }
 
   /**

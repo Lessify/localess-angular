@@ -1,25 +1,18 @@
-import {JsonPipe} from '@angular/common';
-import {Component, inject, OnInit, signal} from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import {ServerContentService, type Links} from '@localess/angular/server';
+import {Component} from '@angular/core';
+import {RouterOutlet} from '@angular/router';
+import {LOCALES} from './shared/utils/locales';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, JsonPipe],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'angular-ssr';
-  serverContentService = inject(ServerContentService)
-  links = signal<Links | undefined>(undefined)
+  LOCALES = LOCALES
 
-  ngOnInit(): void {
-    this.serverContentService.getLinks().subscribe({
-      next: value => {
-        console.log(value)
-        this.links.set(value)
-      }
-    })
+  constructor() {
+    console.log('Hello from AppComponent');
   }
 }

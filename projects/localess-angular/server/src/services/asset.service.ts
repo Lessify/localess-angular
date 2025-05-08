@@ -2,14 +2,12 @@ import {inject, Injectable} from '@angular/core';
 import {LOCALESS_SERVER_CONFIG} from "../localess.config";
 import type {ContentAsset} from "../models";
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ServerAssetService {
   config = inject(LOCALESS_SERVER_CONFIG)
 
   constructor() {
-    console.log('[Localess]ServerAssetService', this.config);
+    console.log('[Localess] ServerAssetService', this.config);
   }
 
   /**
