@@ -12,12 +12,12 @@ export class LocalessBrowserService extends LocalessService {
     super();
   }
 
-  fetchLinks(): Observable<Links> {
+  getLinks(): Observable<Links> {
     console.log('fetchLinks', this.platformId);
     return of(this.state.get(this.LINKS_KEY, {}));
   }
 
-  fetchContentById(id: string, locale?: string): Observable<Content> {
+  getContentById(id: string, locale?: string): Observable<Content> {
     console.log('fetchDocumentById', id, this.platformId);
     const key = makeStateKey<Content>(`ll:content:id:${id}`);
     if (this.state.hasKey(key)) {
@@ -38,7 +38,7 @@ export class LocalessBrowserService extends LocalessService {
     return of();
   }
 
-  fetchContentBySlug(slug: string | string[], locale?: string): Observable<Content> {
+  getContentBySlug(slug: string | string[], locale?: string): Observable<Content> {
     let normalizedSlug: string;
     if (Array.isArray(slug)) {
       normalizedSlug = slug.join('/');

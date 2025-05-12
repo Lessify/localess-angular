@@ -15,21 +15,21 @@ export class LocalessServerService extends LocalessService {
     super();
   }
 
-  fetchLinks(): Observable<Links> {
+  getLinks(): Observable<Links> {
     console.log('fetchLinks', this.platformId);
     return this.contentsService
       .getLinks()
       .pipe(tap(links => this.state.set(this.LINKS_KEY, links)));
   }
 
-  fetchContentById(id: string, locale?: string): Observable<Content> {
+  getContentById(id: string, locale?: string): Observable<Content> {
     console.log('fetchDocumentById', id, locale, this.platformId);
     return this.contentsService
       .getContentById(id, {locale: locale})
       .pipe(tap(content => this.state.set(makeStateKey<Content>(`ll:content:id:${id}`), content)));
   }
 
-  fetchContentBySlug(slug: string | string[], locale?: string): Observable<Content> {
+  getContentBySlug(slug: string | string[], locale?: string): Observable<Content> {
     let normalizedSlug: string;
     if (Array.isArray(slug)) {
       normalizedSlug = slug.join('/');

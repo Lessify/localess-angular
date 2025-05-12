@@ -6,9 +6,9 @@ import { Observable } from 'rxjs';
 export abstract class LocalessService {
   LINKS_KEY = makeStateKey<Links>('ll:links');
 
-  abstract fetchLinks(): Observable<Links>;
+  abstract getLinks(): Observable<Links>;
 
-  abstract fetchContentById(id: string, locale?: string): Observable<Content>;
+  abstract getContentById(id: string, locale?: string): Observable<Content>;
 
-  abstract fetchContentBySlug(slug: string | string[], locale?: string): Observable<Content>;
+  abstract getContentBySlug(slug: string | string[], locale?: string): Observable<Content>;
 }

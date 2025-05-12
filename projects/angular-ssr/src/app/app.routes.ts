@@ -7,7 +7,7 @@ import {SlugComponent} from './slug/slug.component';
 const resolveContent: ResolveFn<Content> = (route) => {
   const locale = route.queryParams['locale'] || undefined;
   const localessService = inject(LocalessService);
-  return localessService.fetchContentBySlug('home', locale );
+  return localessService.getContentBySlug('home', locale );
 }
 
 const wildcardSlugsResolver: ResolveFn<Array<string>> = (route) => {

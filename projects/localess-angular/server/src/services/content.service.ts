@@ -1,4 +1,5 @@
-import {inject, Injectable} from '@angular/core';
+import {isPlatformBrowser} from '@angular/common';
+import {Inject, inject, Injectable, PLATFORM_ID} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ContentData} from '@localess/js-client';
 import {Observable} from 'rxjs';
@@ -15,8 +16,14 @@ export class ServerContentService {
 
   constructor(
     private readonly httpClient: HttpClient,
+    @Inject(PLATFORM_ID) private readonly platformId: Object,
   ) {
-    console.log('[Localess] ServerContentService', this.config);
+    if (this.config.debug) {
+      console.log('[Localess] ServerContentService', this.config);
+    }
+    if(isPlatformBrowser(platformId)) {
+      console.error('[Localess] ServerContentService: Please use the service on server side only.');
+    }
   }
 
   /**
@@ -66,6 +73,9 @@ export class ServerContentService {
     if (params?.locale) {
       clientParams['locale'] = params.locale;
     }
+    if (this.config.debug) {
+      console.log('[Localess] getContentBySlug', url, clientParams);
+    }
     return this.httpClient.get<Content<T>>(url, {
       params: {
         token: this.config.token,
@@ -93,6 +103,9 @@ export class ServerContentService {
     }
     if (params?.locale) {
       clientParams['locale'] = params.locale;
+    }
+    if (this.config.debug) {
+      console.log('[Localess] getContentById', url, clientParams);
     }
     return this.httpClient.get<Content<T>>(url, {
       params: {

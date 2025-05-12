@@ -1,4 +1,5 @@
-import {inject, Injectable} from '@angular/core';
+import {isPlatformBrowser} from '@angular/common';
+import {Inject, inject, Injectable, PLATFORM_ID} from '@angular/core';
 import {LOCALESS_SERVER_CONFIG} from "../localess.config";
 import type {ContentAsset} from "../models";
 
@@ -6,8 +7,15 @@ import type {ContentAsset} from "../models";
 export class ServerAssetService {
   config = inject(LOCALESS_SERVER_CONFIG)
 
-  constructor() {
-    console.log('[Localess] ServerAssetService', this.config);
+  constructor(
+    @Inject(PLATFORM_ID) private readonly platformId: Object,
+  ) {
+    if (this.config.debug) {
+      console.log('[Localess] ServerAssetService', this.config);
+    }
+    if(isPlatformBrowser(platformId)) {
+      console.error('[Localess] ServerAssetService: Please use the service on server side only.');
+    }
   }
 
   /**

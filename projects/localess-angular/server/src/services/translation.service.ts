@@ -1,5 +1,6 @@
+import {isPlatformBrowser} from '@angular/common';
 import {HttpClient} from '@angular/common/http';
-import {inject, Injectable} from '@angular/core';
+import {Inject, inject, Injectable, PLATFORM_ID} from '@angular/core';
 import {Observable} from 'rxjs';
 import {LOCALESS_SERVER_CONFIG} from "../localess.config";
 import type {Translations} from "../models";
@@ -10,8 +11,14 @@ export class ServerTranslationService {
 
   constructor(
     private readonly httpClient: HttpClient,
+    @Inject(PLATFORM_ID) private readonly platformId: Object,
   ) {
-    console.log('[Localess] ServerTranslationService', this.config);
+    if (this.config.debug) {
+      console.log('[Localess] ServerTranslationService', this.config);
+    }
+    if(isPlatformBrowser(platformId)) {
+      console.error('[Localess] ServerTranslationService: Please use the service on server side only.');
+    }
   }
 
   /**
