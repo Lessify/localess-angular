@@ -1,5 +1,5 @@
 import { Injectable, makeStateKey } from '@angular/core';
-import {Content, Links} from '@localess/angular';
+import {Content, Links, ContentData} from '@localess/angular';
 import { Observable } from 'rxjs';
 
 @Injectable()
@@ -8,7 +8,7 @@ export abstract class LocalessService {
 
   abstract getLinks(): Observable<Links>;
 
-  abstract getContentById(id: string, locale?: string): Observable<Content>;
+  abstract getContentById<T extends ContentData = ContentData>(id: string, locale?: string): Observable<Content<T>>;
 
-  abstract getContentBySlug(slug: string | string[], locale?: string): Observable<Content>;
+  abstract getContentBySlug<T extends ContentData = ContentData>(slug: string | string[], locale?: string): Observable<Content<T>>;
 }

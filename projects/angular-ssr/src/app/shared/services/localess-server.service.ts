@@ -1,5 +1,5 @@
 import {Inject, Injectable, makeStateKey, PLATFORM_ID, TransferState} from '@angular/core';
-import {Content, Links} from '@localess/angular';
+import {Content, ContentData, Links} from '@localess/angular';
 import {ServerContentService} from '@localess/angular/server';
 import {Observable, tap} from 'rxjs';
 import {LocalessService} from './localess.service';
@@ -22,14 +22,14 @@ export class LocalessServerService extends LocalessService {
       .pipe(tap(links => this.state.set(this.LINKS_KEY, links)));
   }
 
-  getContentById(id: string, locale?: string): Observable<Content> {
+  getContentById<T extends ContentData = ContentData>(id: string, locale?: string): Observable<Content<T>> {
     console.log('fetchDocumentById', id, locale, this.platformId);
     return this.contentsService
-      .getContentById(id, {locale: locale})
-      .pipe(tap(content => this.state.set(makeStateKey<Content>(`ll:content:id:${id}`), content)));
+      .getContentById<T>(id, {locale: locale})
+      .pipe(tap(content => this.state.set(makeStateKey<Content<T>>(`ll:content:id:${id}`), content)));
   }
 
-  getContentBySlug(slug: string | string[], locale?: string): Observable<Content> {
+  getContentBySlug<T extends ContentData = ContentData>(slug: string | string[], locale?: string): Observable<Content<T>> {
     let normalizedSlug: string;
     if (Array.isArray(slug)) {
       normalizedSlug = slug.join('/');
@@ -38,7 +38,7 @@ export class LocalessServerService extends LocalessService {
     }
     console.log('fetchDocumentBySlug', normalizedSlug, locale, this.platformId);
     return this.contentsService
-      .getContentBySlug(normalizedSlug, {locale: locale})
-      .pipe(tap(content => this.state.set(makeStateKey<Content>(`ll:content:slug:${normalizedSlug}`), content)));
+      .getContentBySlug<T>(normalizedSlug, {locale: locale})
+      .pipe(tap(content => this.state.set(makeStateKey<Content<T>>(`ll:content:slug:${normalizedSlug}`), content)));
   }
 }

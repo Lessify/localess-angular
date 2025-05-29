@@ -1,5 +1,5 @@
 import { Inject, Injectable, makeStateKey, PLATFORM_ID, TransferState } from '@angular/core';
-import {Content, Links} from '@localess/angular';
+import {Content, ContentData, Links} from '@localess/angular';
 import { Observable, of } from 'rxjs';
 import {LocalessService} from './localess.service';
 
@@ -17,9 +17,9 @@ export class LocalessBrowserService extends LocalessService {
     return of(this.state.get(this.LINKS_KEY, {}));
   }
 
-  getContentById(id: string, locale?: string): Observable<Content> {
+  getContentById<T extends ContentData = ContentData>(id: string, locale?: string): Observable<Content<T>> {
     console.log('fetchDocumentById', id, this.platformId);
-    const key = makeStateKey<Content>(`ll:content:id:${id}`);
+    const key = makeStateKey<Content<T>>(`ll:content:id:${id}`);
     if (this.state.hasKey(key)) {
       return of(
         this.state.get(key, {
@@ -38,7 +38,7 @@ export class LocalessBrowserService extends LocalessService {
     return of();
   }
 
-  getContentBySlug(slug: string | string[], locale?: string): Observable<Content> {
+  getContentBySlug<T extends ContentData = ContentData>(slug: string | string[], locale?: string): Observable<Content<T>> {
     let normalizedSlug: string;
     if (Array.isArray(slug)) {
       normalizedSlug = slug.join('/');
@@ -46,7 +46,7 @@ export class LocalessBrowserService extends LocalessService {
       normalizedSlug = slug;
     }
     console.log('fetchDocumentBySlug', normalizedSlug, this.platformId);
-    const key = makeStateKey<Content>(`ll:content:slug:${normalizedSlug}`);
+    const key = makeStateKey<Content<T>>(`ll:content:slug:${normalizedSlug}`);
     if (this.state.hasKey(key)) {
       return of(
         this.state.get(key, {
