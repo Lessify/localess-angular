@@ -34,7 +34,9 @@ export function provideLocalessBrowser(options: LocalessBrowserOptions): Environ
     throw new Error('Localess Space ID can\'t be empty');
   }
   if (enableSync) {
-    console.log('[Localess] enableSync', enableSync)
+    if (debug) {
+      console.log('[Localess] enableSync', enableSync)
+    }
     loadLocalessSync(origin);
   }
   return [
