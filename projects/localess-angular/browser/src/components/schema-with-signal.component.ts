@@ -29,10 +29,6 @@ export abstract class SchemaWithSignalComponent<T extends ContentData = ContentD
   }
 
   findLink(link: ContentLink): string {
-    const links = this.links()
-    if (links) {
-      return findLink(links, link)
-    }
-    return '/not-found';
+    return findLink(this.links(), link)
   }
 }
