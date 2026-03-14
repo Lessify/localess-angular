@@ -5,7 +5,7 @@
     "entryFile": "src/public-api.ts"
   },
   "allowedNonPeerDependencies": [
-    "@localess/js-client",
+    "@localess/*",
     "@tiptap/*"
   ]
 }

@@ -9,5 +9,6 @@ export type {
   ContentLink,
   ContentReference,
   Links,
+  References,
   Translations
-} from '@localess/js-client';
+} from '@localess/client';

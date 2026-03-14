@@ -1,11 +1,10 @@
 import {isPlatformBrowser} from '@angular/common';
 import {Inject, inject, Injectable, PLATFORM_ID} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {ContentData} from '@localess/js-client';
 import {Observable, of} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {LOCALESS_SERVER_CONFIG} from "../localess.config";
-import type {Content, Links, ContentFetchParams, LinksFetchParams} from "../models";
+import type {Content, Links, ContentFetchParams, LinksFetchParams, ContentData} from "../models";
 
 interface ClientParams {
   [param: string]: string | boolean
@@ -130,6 +129,12 @@ export class ServerContentService {
     if (params?.locale) {
       clientParams['locale'] = params.locale;
     }
+    if (params?.resolveReference) {
+      clientParams['resolveReference'] = params.resolveReference;
+    }
+    if (params?.resolveLink) {
+      clientParams['resolveLink'] = params.resolveLink;
+    }
     if (this.config.debug) {
       console.log('[Localess] getContentBySlug', url, clientParams);
     }
@@ -165,7 +170,12 @@ export class ServerContentService {
     if (params?.locale) {
       parts.push(`locale=${params.locale}`);
     }
-
+    if (params?.resolveReference) {
+      parts.push(`resolveReference=${params.resolveReference}`);
+    }
+    if (params?.resolveLink) {
+      parts.push(`resolveLink=${params.resolveLink}`);
+    }
     return parts.join('&');
   }
 
@@ -202,6 +212,12 @@ export class ServerContentService {
     if (params?.locale) {
       clientParams['locale'] = params.locale;
     }
+    if (params?.resolveReference) {
+      clientParams['resolveReference'] = params.resolveReference;
+    }
+    if (params?.resolveLink) {
+      clientParams['resolveLink'] = params.resolveLink;
+    }
     if (this.config.debug) {
       console.log('[Localess] getContentById', url, clientParams);
     }
@@ -236,6 +252,12 @@ export class ServerContentService {
     // Add locale if present
     if (params?.locale) {
       parts.push(`locale=${params.locale}`);
+    }
+    if (params?.resolveReference) {
+      parts.push(`resolveReference=${params.resolveReference}`);
+    }
+    if (params?.resolveLink) {
+      parts.push(`resolveLink=${params.resolveLink}`);
     }
 
     return parts.join('&');

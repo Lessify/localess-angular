@@ -1,6 +1,6 @@
 import {IMAGE_LOADER, ImageLoaderConfig} from "@angular/common";
 import {EnvironmentProviders, makeEnvironmentProviders} from "@angular/core";
-import {loadLocalessSync} from '@localess/js-client';
+import {loadLocalessSync} from '@localess/client';
 import {LOCALESS_BROWSER_CONFIG} from "./localess.config";
 import {BrowserAssetService} from './services/asset.service';
 

@@ -12,4 +12,4 @@ export * from './localess.config';
 // Providers
 export * from './localess.providers';
 
-export {localessClient, LocalessClientOptions, LinksFetchParams, ContentFetchParams} from '@localess/js-client';
+export {localessClient, LocalessClientOptions, LinksFetchParams, ContentFetchParams} from '@localess/client';

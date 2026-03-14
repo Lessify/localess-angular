@@ -1,5 +1,4 @@
 // Components
-export * from './components/localess.component';
 export * from './components/schema.component';
 export * from './components/schema-with-input.component';
 export * from './components/schema-with-signal.component';
@@ -29,4 +28,4 @@ export * from  './localess.config';
 export * from  './localess.providers';
 
 // Sync
-export {LocalessSync, EventToApp, EventCallback, EventToAppType} from '@localess/js-client'
+export {LocalessSync, EventToApp, EventCallback, EventToAppType} from '@localess/client'
