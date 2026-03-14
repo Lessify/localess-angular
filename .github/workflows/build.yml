@@ -1,4 +1,4 @@
-name: Run Unit Tests
+name: Build and Lint
 
 on:
   push:
@@ -10,14 +10,17 @@ jobs:
   localess-angular:
     name: Lint and Build
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 20.x, 22.x, 24.x ]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
-          node-version: 20
-          cache: npm
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
       - run: npm install
       #- run: npm run lint
       - run: npm run build:localess
